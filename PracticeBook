@@ -1,3 +1,10 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="RecipeStyle.css">
+    <title>Recipe Book</title>
+  </head>
+  <body>
 <div class="cover">
   <div class="book">
   <label for="page-1"  class="book__page book__page--1">
@@ -77,3 +84,4 @@
   </label>
 </div>
 </div>
+</body>
