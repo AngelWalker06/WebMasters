@@ -13,8 +13,8 @@
   
   /* fonts */
   --book-title: 'Tulpen One', sans-serif;
-  --title: 'Recipe Book', serif;
-  --body: 'Recipe Book', serif;
+  --title: 'Cormorant Garamond', serif;
+  --body: 'Cormorant Garamond', serif;
   --base-size: var(--baseline) * 1.2;
 }
 
