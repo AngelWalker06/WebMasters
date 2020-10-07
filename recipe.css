@@ -211,7 +211,7 @@ body {
   transform: rotateY(-180deg);
 }
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color:#debb7e; /* Green */
   border: none;
   color: white;
   padding: 16px 32px;
@@ -227,10 +227,11 @@ body {
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
+  border: 2px solid #debb7e;
 }
 
 .button1:hover {
-  background-color: #4CAF50;
+  background-color: #debb7e;
   color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
