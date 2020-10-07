@@ -13,6 +13,11 @@ html {
   text-align: center;
 }
 body {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
   background: #fde3a7;
 }
 ul {
