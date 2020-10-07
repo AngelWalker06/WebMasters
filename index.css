@@ -51,6 +51,9 @@ ul {
 }
 .book:hover {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), 0 9px 20px 0 rgba(0, 0, 0, 0.45);
+  animation-name: move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 .book:hover img {
   transform: rotateY(-25deg);
@@ -76,6 +79,38 @@ ul {
 }
 
 h1,
+h3,
 h6 {
   text-align: center;
+  color: darkred;
+  background-color:white;
+}
+
+img.cf {
+	position: relative;
+	animation-name: move;
+	animation-duration: 4s;
+	animation-iteration-count: infinite
+}
+
+img.cf:hover {
+	animation-name: chefmove;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes chefmove {
+	0% {transform: rotate(45deg);}
+	25% {transform: rotate(90deg);}
+	50% {transform: rotate(180deg);}
+	75% {transform: rotate(270deg);}
+	100% {transform: rotate(-360deg);}
+}
+
+@keyframes move {
+	0% {bottom: 0px;}
+	25% {bottom: 10px;}
+	50% {bottom:0px;}
+	75% {bottom: 10px;}
+	100% {bottom:0px;}
 }
