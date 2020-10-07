@@ -212,11 +212,11 @@ body {
 }
 
 .button {
-    width: 400px;
-    height: 100px;
-    background: #f3f0f1;
+    width: 100px;
+    height: 50px;
+    background: #fde3a7;
     position: relative;
-    background: #f3f0f1;
+    background: #f0d19c;
     margin-bottom: 25px;
     border-radius: 32px;
     text-align: center;
