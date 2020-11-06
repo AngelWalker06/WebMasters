@@ -3,11 +3,11 @@
 $errors = [];
 $user = [
   'username' => '',
-  'score1' => '',
-  'score2' => '',
-  'score3' => '',
-  'score4' => '',
-  'score5' => '',
+  'score1' => 0,
+  'score2' => 0,
+  'score3' => 0,
+  'score4' => 0,
+  'score5' => 0,
   'password' => '',
 ];
 /* Confirm that values are present before accessing them. */ if (
@@ -28,7 +28,7 @@ if (empty($errors)) {
   file_put_contents("userdata.txt", PHP_EOL . $to_write, FILE_APPEND);
   ?>
     <pre>
-        Thank you for the registering!
+        Thank you for the registering! <?php echo $user; ?>
         do you want to play game now?
         link
     </pre>
