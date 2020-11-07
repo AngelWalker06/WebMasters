@@ -1,4 +1,5 @@
-<?php session_save_path("session"); ?>
+<?php session_save_path("session"); 
+  session_start();?>
 <?php
 $errors = [];
 $userN = $_POST['username'];
@@ -25,7 +26,6 @@ if ($_POST['password'] == "") {
 
 if ($success && empty($errors)): ?>
 <?php
-session_start();
 $_SESSION['username'] = $userN;
 $_SESSION['score1'] = $user_details[1];
 $_SESSION['score2'] = $user_details[2];
