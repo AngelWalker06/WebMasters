@@ -1,4 +1,5 @@
-<?php session_save_path("session"); ?>
+<?php session_save_path("session"); 
+  session_start();?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,7 +21,7 @@
     <?php include("header.php") ?>
     <h1>Username <?php //echo $_POST['username'] ?></h1>
     <h2>level 1</h2>
-    <a href="#">Leaderboard</a>
+    <a href="leaderboard2.php">Leaderboard</a>
     <br>
     <br>
     <form action="" method="post">
