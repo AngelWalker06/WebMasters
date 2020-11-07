@@ -8,10 +8,20 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  background: rgb(223, 189, 150);
+
+  font-family: "Josefin Sans", sans-serif;
+}
+.wrapper{
+  background: rgb(223, 189, 150);
+
+  font-family: "Josefin Sans", sans-serif;
 }
 body {
   margin: 0;
   text-align: center;
+  background: rgb(223, 189, 150);
+  font-family: "Josefin Sans", sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;

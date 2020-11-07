@@ -2,7 +2,7 @@
 <head>
    <link rel="stylesheet" href="index.css" />
 </head>
-<body class="mx-auto" >
+<body >
    <div class="cup">
       <div class="coffee"></div>
    </div>

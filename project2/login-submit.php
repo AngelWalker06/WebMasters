@@ -16,7 +16,7 @@ foreach ($userlist as $user) {
 if ($success): ?><head>
 <link rel="stylesheet" href="style.css" />
 </head>
-<body> <div>
+<body class="wrapper"> <div>
  Thanks for logging in! Let's play game now!</br>
  <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
  <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
@@ -25,7 +25,14 @@ if ($success): ?><head>
  <a class="btn btn-primary" href="level5.php" role="button">Level 5</a></br>
  </div></body>
 <?php else: ?>
-  <br> You have entered the wrong username or password. Please try again. <br>
+  <head>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="wrapper"> <div>
+<br> You have entered the wrong username or password. Please try again. <br>
+<a class="btn btn-primary" href="login.php" role="button">Back to Login</a></br>
+ </div></body>
+
 
 <?php endif;
 

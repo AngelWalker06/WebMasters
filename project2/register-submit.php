@@ -29,7 +29,7 @@ if (empty($errors)) {
   <head>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body> <div>
+<body class="wrapper"> <div>
    Thanks for the registration! Let's play game now!</br>
    <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
    <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
