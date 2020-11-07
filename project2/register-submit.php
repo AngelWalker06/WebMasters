@@ -45,15 +45,21 @@ if (empty($errors)) {
 <?php
 } else {
    ?>
-    <div class="errors">
-        Please fix the following errors:
-        <ul>
+   <head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="wrapper">
+     <div class="errors">
+   Please fix the following errors:
+   <ul>
 <?php foreach ($errors as $error) { ?>
-            <li><?= $error ?> </li>
-    <?php } ?>
-        </ul>
-        <?php include "footer.php"; ?>
-    </div>
+       <li><?= $error ?> </li>
+<?php } ?>
+   </ul>
+   <a class="btn btn-primary" href="register.php" role="button">back to register</a></br>
+   <?php include "footer.php"; ?>
+</div></body>
+    
 <?php
 }
 

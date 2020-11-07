@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -17,6 +17,8 @@
   </head>
 
   <body>
+  <?php include "header.php"; ?>
+<?php session_start(); ?>
     <h1>Hello <?php echo $_SESSION['username']; ?></h1>
     <h2>level 1</h2>
     <a href="#">Leaderboard</a>
@@ -34,7 +36,6 @@
       } elseif ($_POST["first"] == "h") {
         echo '<input type="text" name="first" class="letterInput correct" value="h">';
       }
-
       if ($_POST["second"] != "a") {
         echo '<input type="text" name="second" class="letterInput" value="">';
       } elseif ($_POST["reset"]) {
@@ -42,7 +43,6 @@
       } elseif ($_POST["second"] == "a") {
         echo '<input type="text" name="second" class="letterInput correct" value="a">';
       }
-
       if ($_POST["third"] != "n") {
         echo '<input type="text" name="third" class="letterInput" value="">';
       } elseif ($_POST["reset"]) {
@@ -64,7 +64,6 @@
       } elseif ($_POST["fifth"] == "m") {
         echo '<input type="text" name="fifth" class="letterInput correct" value="m">';
       }
-
       if ($_POST["sixth"] != "a") {
         echo '<input type="text" name="sixth" class="letterInput" value="">';
       } elseif ($_POST["reset"]) {
