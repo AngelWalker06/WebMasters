@@ -13,11 +13,21 @@ foreach ($userlist as $user) {
   }
 }
 
-if ($success) {
-  echo "<br> Hi $userN you have been logged in. <br>";
-} else {
-  echo "<br> You have entered the wrong username or password. Please try again. <br>";
-}
+if ($success): ?><head>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body> <div>
+ Thanks for the registration! Let's play game now!</br>
+ <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
+ <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
+ <a class="btn btn-primary" href="level3.php" role="button">Level 3</a></br>
+ <a class="btn btn-primary" href="level4.php" role="button">Level 4</a></br>
+ <a class="btn btn-primary" href="level5.php" role="button">Level 5</a></br>
+ </div></body>
+<?php else: ?>
+  <br> You have entered the wrong username or password. Please try again. <br>
+
+<?php endif;
 
 
 ?>
