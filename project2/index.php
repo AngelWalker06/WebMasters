@@ -19,8 +19,8 @@
       </div>
       <div>
          <p>Link for the rule</p>
-            <a class="btn btn-primary" href="login.php" role="button">Click here for the rule</a>        
+            <a class="btn btn-primary" href="rules.php" role="button">Click here for the rule</a>        
       </div>
    </div>
-   
+   <?php include "footer.php"; ?>
 </body>

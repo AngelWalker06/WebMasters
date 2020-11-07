@@ -17,8 +17,8 @@
   </style>
 </head>
 
-<body class="mx-auto" style="width: auto;">
-  <div class="wrapper">
+<body class="wrapper" style="width: auto;">
+  <div >
     <h2>Sign Up</h2>
     <p>Please fill this form to create an account.</p>
     <form action="register-submit.php" method="post">
@@ -43,4 +43,5 @@
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
   </div>
+  <?php include "footer.php"; ?>
 </body>

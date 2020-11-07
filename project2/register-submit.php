@@ -17,6 +17,12 @@ if (isset($_POST['username'])) {
 if (isset($_POST['password'])) {
   $user['password'] = urlencode($_POST['password']);
 }
+if ($_POST['username'] == "") {
+  $errors[] = "Please fill username";
+}
+if ($_POST['password'] == "") {
+  $errors[] = "Please fill password";
+}
 
 /* Write to singles.txt after validation. */
 if (empty($errors)) {
@@ -31,24 +37,29 @@ if (empty($errors)) {
 </head>
 <body class="wrapper"> <div>
    Thanks for the registration! Let's play game now!</br>
-   <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
-   <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
-   <a class="btn btn-primary" href="level3.php" role="button">Level 3</a></br>
-   <a class="btn btn-primary" href="level4.php" role="button">Level 4</a></br>
-   <a class="btn btn-primary" href="level5.php" role="button">Level 5</a></br>
-   </div></body>
+   You need to log in to play!</br>
+   <a class="btn btn-primary" href="login.php" role="button">Log in here</a></br>
+   </div>
+   <?php include "footer.php"; ?></body>
   
 <?php
 } else {
    ?>
-    <div class="errors">
-        Please fix the following errors:
-        <ul>
+   <head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="wrapper">
+     <div class="errors">
+   Please fix the following errors:
+   <ul>
 <?php foreach ($errors as $error) { ?>
-            <li><?= $error ?> </li>
-    <?php } ?>
-        </ul>
-    </div>
+       <li><?= $error ?> </li>
+<?php } ?>
+   </ul>
+   <a class="btn btn-primary" href="register.php" role="button">back to register</a></br>
+   <?php include "footer.php"; ?>
+</div></body>
+    
 <?php
 }
 

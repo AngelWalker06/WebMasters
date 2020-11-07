@@ -10,8 +10,8 @@
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
-<body>
-    <div class="wrapper">
+<body class="wrapper">
+    <div >
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="login-submit.php" method="post">
@@ -31,9 +31,11 @@
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
+                <input type="reset" class="btn btn-default" value="Reset">
             </div>
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
-    </div>    
+    </div>   
+    <?php include "footer.php"; ?> 
 </body>
 </html>
