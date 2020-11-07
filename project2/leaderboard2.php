@@ -1,5 +1,5 @@
 <?php session_save_path("session"); ?>
-<?php session_start() ?>
+<?php session_start(); ?>
 <!--
 	Project 2 - PHP
 	This is a leaderboard page for one of the levels.
