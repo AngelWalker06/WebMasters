@@ -1,5 +1,5 @@
-<? session_save_path("session"); ?>
-<? session_start(); ?>
+<?php session_save_path("session"); ?>
+<?php session_start(); ?>
 <?php session_destroy(); ?>
 <head>
 <link rel="stylesheet" href="index.css" />
