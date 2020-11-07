@@ -1,3 +1,5 @@
+<? session_save_path("session"); ?>
+<? session_start(); ?>
 <?php session_destroy(); ?>
 <head>
 <link rel="stylesheet" href="index.css" />
