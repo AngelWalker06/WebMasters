@@ -17,6 +17,10 @@
          <p>Already have an account?</p>
             <a class="btn btn-primary" href="login.php" role="button">Login here</a>        
       </div>
+      <div>
+         <p>Link for the rule</p>
+            <a class="btn btn-primary" href="login.php" role="button">Click here for the rule</a>        
+      </div>
    </div>
    
 </body>
