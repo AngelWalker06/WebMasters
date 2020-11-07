@@ -1,3 +1,4 @@
+<?php session_save_path("session"); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
