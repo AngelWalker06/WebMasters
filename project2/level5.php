@@ -12,7 +12,6 @@
       }
 
     </style>
-    <link rel="stylesheet" href="levels.css">
   </head>
 
   <body>
@@ -54,7 +53,7 @@
         echo'<input type="text" name="fourth" class="letterInput" value="">';
       }else if($_POST["reset"]){
         echo'<input type="text" name="fourth" class="letterInput" value="">';
-      } else if ($_POST["third"]=="s"){
+      } else if ($_POST["fourth"]=="s"){
         echo'<input type="text" name="fourth" class="letterInput correct" value="s">';
       }
 

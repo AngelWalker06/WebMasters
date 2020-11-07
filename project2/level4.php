@@ -12,7 +12,6 @@
       }
 
     </style>
-    <link rel="stylesheet" href="levels.css">
   </head>
 
   <body>
@@ -105,7 +104,7 @@
         $finalWord .= $value;
       }
       if ($finalWord=="pantsSubmit"){
-      echo 'Congratulations, you completed this level. <a href="level4.php">Next level</a>';
+      echo 'Congratulations, you completed this level. <a href="level5.php">Next level</a>';
       $score="Level 2, ".$username.",".($trials*2)."\n";
       file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
       file_put_contents($file, 4);
