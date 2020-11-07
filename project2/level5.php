@@ -23,8 +23,8 @@
     <br>
     <form action="" method="post">
       <fieldset>
-      <legend>A dish</legend>
-      <p>A programming language</p>
+      <legend>find the word</legend>
+      <p>A dish</p>
       <?php
       if ($_POST["first"]!="e"){
         echo'<input type="text" name="first" class="letterInput" value="">';
@@ -35,19 +35,26 @@
       }
 
       if ($_POST["second"]!="g"){
-        echo'<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="">';
       }else if ($_POST["second"]=="g"){
-        echo'<input type="text" name="second" class="letterInput correct" value="g">';
+        echo '<input type="text" name="second" class="letterInput correct" value="g">';
+      }
+      if ($_POST["third"]!="g"){
+        echo '<input type="text" name="third" class="letterInput" value="">';
+      }else if($_POST["reset"]){
+        echo '<input type="text" name="third" class="letterInput" value="">';
+      }else if ($_POST["third"]=="g"){
+        echo '<input type="text" name="third" class="letterInput correct" value="g">';
       }
 
-      if ($_POST["third"]!="s"){
-        echo'<input type="text" name="third" class="letterInput" value="">';
+      if ($_POST["fourth"]!="s"){
+        echo'<input type="text" name="fourth" class="letterInput" value="">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="third" class="letterInput" value="">';
-      } else if ($_POST["thrid"]=="s"){
-        echo'<input type="text" name="third" class="letterInput correct" value="s">';
+        echo'<input type="text" name="fourth" class="letterInput" value="">';
+      } else if ($_POST["third"]=="s"){
+        echo'<input type="text" name="fourth" class="letterInput correct" value="s">';
       }
 
        ?>
@@ -77,7 +84,7 @@
 <?php
   $file = 'score_tracker.txt';
   $trials = intval(file_get_contents($file));
-  if ($trials <= 0){
+  if ($trials == 0){
     echo '<h3> Game Over. <h3>';
     echo '<a href="index.php">Back to main page</a>';
     file_put_contents($file, 4);
@@ -92,7 +99,7 @@
       if ($finalWord=="eggsSubmit"){
       echo 'Congratulations, you Finished the game';
       $score="Level 5, ".$username.",".($trials*2)."\n";
-      file_put_contents("users_score.txt", $score);
+      file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
       file_put_contents($file, 4);
       }
      else{

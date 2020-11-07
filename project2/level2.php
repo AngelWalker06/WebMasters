@@ -83,7 +83,7 @@
 <?php
   $file = 'score_tracker.txt';
   $trials = intval(file_get_contents($file));
-  if ($trials <= 0){
+  if ($trials == 0){
     echo '<h3> Game Over. <h3>';
     echo '<a href="index.php">Back to main page</a>';
     file_put_contents($file, 4);
@@ -98,7 +98,7 @@
       if ($finalWord=="htmlSubmit"){
       echo 'Congratulations, you completed this level. <a href="level3.php">Next level</a>';
       $score="Level 2, ".$username.",".($trials*2)."\n";
-      file_put_contents("users_score.txt", $score);
+      file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
       file_put_contents($file, 4);
       }
      else{

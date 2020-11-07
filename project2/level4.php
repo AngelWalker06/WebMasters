@@ -23,8 +23,8 @@
     <br>
     <form action="" method="post">
       <fieldset>
-      <legend>Something you wear</legend>
-      <p>A month</p>
+      <legend>Find the correct word</legend>
+      <p>Something you wear</p>
       <?php
       if ($_POST["first"]!="p"){
         echo'<input type="text" name="first" class="letterInput" value="">';
@@ -52,16 +52,17 @@
           echo'<input type="text" name="fourth" class="letterInput" value="">';
         }else if($_POST["reset"]){
           echo'<input type="text" name="fourth" class="letterInput" value="">';
-        } else if ($_POST["third"]=="t"){
+        } else if ($_POST["fourth"]=="t"){
           echo'<input type="text" name="fourth" class="letterInput correct" value="t">';
         }
         if ($_POST["fifth"]!="s"){
           echo'<input type="text" name="fifth" class="letterInput" value="">';
         }else if($_POST["reset"]){
           echo'<input type="text" name="fifth" class="letterInput" value="">';
-        } else if ($_POST["fourth"]=="s"){
+        } else if ($_POST["fifth"]=="s"){
           echo'<input type="text" name="fifth" class="letterInput correct" value="s">';
         }
+
 
        ?>
 
@@ -73,14 +74,13 @@
       <br>
       <?php
       if(isset( $_POST["clues"])) {
-        echo '<p>Covers the leg<p>';
+        echo '<p>Covers the leg</p>';
       }
 
        ?>
       <?php
       if ($_POST["reset"]){
         file_put_contents("score_tracker.txt", 4);
-       }
        }
        ?>
     </fieldset>
@@ -91,7 +91,7 @@
 <?php
   $file = 'score_tracker.txt';
   $trials = intval(file_get_contents($file));
-  if ($trials <= 0){
+  if ($trials == 0){
     echo '<h3> Game Over. <h3>';
     echo '<a href="index.php">Back to main page</a>';
     file_put_contents($file, 4);
@@ -104,9 +104,9 @@
         $finalWord .= $value;
       }
       if ($finalWord=="pantsSubmit"){
-      echo 'Congratulations, you completed this level. <a href="level5.php">Next level</a>';
-      $score="Level 4, ".$username.",".($trials*2)."\n";
-      file_put_contents("users_score.txt", $score);
+      echo 'Congratulations, you completed this level. <a href="level4.php">Next level</a>';
+      $score="Level 2, ".$username.",".($trials*2)."\n";
+      file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
       file_put_contents($file, 4);
       }
      else{
