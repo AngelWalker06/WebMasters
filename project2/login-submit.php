@@ -1,5 +1,6 @@
 
 <?php
+$errors = [];
 $userN = $_POST['username'];
 $passW = $_POST['password'];
 $userlist = file('userdata.txt');
@@ -12,8 +13,17 @@ foreach ($userlist as $user) {
     break;
   }
 }
+if ($success == false) {
+  $errors[] = "invalid username or password";
+}
+if ($_POST['username'] == "") {
+  $errors[] = "Please fill username";
+}
+if ($_POST['password'] == "") {
+  $errors[] = "Please fill password";
+}
 
-if ($success): ?>
+if ($success && empty($errors)): ?>
 <?php
 session_start();
 $_SESSION['username'] = $userN;
@@ -45,12 +55,19 @@ $_SESSION['score5'] = $user_details[5];
   <head>
 <link rel="stylesheet" href="style.css" />
 </head>
-<body class="wrapper"> <div>
-<br> You have entered the wrong username or password. Please try again. <br>
-<a class="btn btn-primary" href="login.php" role="button">Back to Login</a></br>
- </div>
- <?php include "footer.php"; ?></body>
+<body class="wrapper"> 
+ 
+ <div class="errors">
+      Please fix the following errors:
+        <ul>
+<?php foreach ($errors as $error) { ?>
+            <li><?= $error ?> </li>
+    <?php } ?>
+        </ul>
+        <a class="btn btn-primary" href="login.php" role="button">Back to Login</a>
+      </body>
 
 
+      <?php include "footer.php"; ?>
 <?php endif;
  ?>

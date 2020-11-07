@@ -17,6 +17,12 @@ if (isset($_POST['username'])) {
 if (isset($_POST['password'])) {
   $user['password'] = urlencode($_POST['password']);
 }
+if ($_POST['username'] == "") {
+  $errors[] = "Please fill username";
+}
+if ($_POST['password'] == "") {
+  $errors[] = "Please fill password";
+}
 
 /* Write to singles.txt after validation. */
 if (empty($errors)) {
