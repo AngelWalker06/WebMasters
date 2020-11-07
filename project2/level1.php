@@ -1,5 +1,6 @@
 <!--<<<<<<< Updated upstream -->
-<?php session_save_path("session"); ?>
+<?php session_save_path("session"); 
+  session_start();?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,7 +32,7 @@
 
     <h1>Hello <?php echo $_SESSION['username']; ?></h1>
     <h2>level 1</h2>
-    <a href="#">Leaderboard</a>
+    <a href="leaderboard1.php">Leaderboard</a>
     <br>
     <br>
     <form action="" method="post">
@@ -143,7 +144,6 @@ if ($trials == 0) {
 </html>
 =======
 <?php
-session_start();
 $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
