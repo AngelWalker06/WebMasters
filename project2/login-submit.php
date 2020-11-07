@@ -1,4 +1,4 @@
-
+<?php session_save_path("session"); ?>
 <?php
 $errors = [];
 $userN = $_POST['username'];
