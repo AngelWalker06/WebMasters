@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-	<title>Leaderboard 2</title>
+	<title>Leaderboard 3</title>
 	<link rel="stylesheet" href="leadStyle.css" />
 </head>
 <body>
 	<?php include("header.php") ?>
 	<h1 style = "text-align: center">Top 5 Leaderboard</h1>
-	<h2 style = "text-align: center">Level 2</h2>
+	<h2 style = "text-align: center">Level 3</h2>
 	<?php
 		//sets file equal to calling for the users file 
 		$file = file('userdata.txt');
@@ -29,7 +29,7 @@
 		
 		//splits the users from the scores into separate indexes and ranks them from high to low scores
 		for ($x=0; $x<count($users)-1; $x++){
-			//current user - splits string into pieces - name [0] and score [2]
+			//current user - splits string into pieces - name [0] and score [3]
 			$current = explode(",", $users[$x]);
 			//runs through the rest of the user list
 			for ($y=$x+1; $y<count($users); $y++){
@@ -37,7 +37,7 @@
 				$next = explode(",", $users[$y]);
 				//checks if current user's score is less than the next user's score
 				//when condition is true - swap user placement
-				if ($current[2] < $next[2]){
+				if ($current[3] < $next[3]){
 					//set temp value to hold current user's info
 					$temp = $users[$x];
 					//swap current index to equal the next user's info
