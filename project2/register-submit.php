@@ -37,8 +37,8 @@ if (empty($errors)) {
 </head>
 <body class="wrapper"> <div>
    Thanks for the registration! Let's play game now!</br>
-   You need to log in to play!</br>
-   <a class="btn btn-primary" href="login.php" role="button">Log in here</a></br>
+   
+   <a class="btn btn-primary" href="level1.php" role="button">Let's Play</a></br>
    </div>
    <?php include "footer.php"; ?></body>
   
