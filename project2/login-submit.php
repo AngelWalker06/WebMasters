@@ -17,7 +17,7 @@ if ($success): ?><head>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body> <div>
- Thanks for the registration! Let's play game now!</br>
+ Thanks for logging in! Let's play game now!</br>
  <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
  <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
  <a class="btn btn-primary" href="level3.php" role="button">Level 3</a></br>
