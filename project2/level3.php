@@ -53,14 +53,14 @@
           echo'<input type="text" name="fourth" class="letterInput" value="">';
         }else if($_POST["reset"]){
           echo'<input type="text" name="fourth" class="letterInput" value="">';
-        } else if ($_POST["third"]=="i"){
+        } else if ($_POST["fourth"]=="i"){
           echo'<input type="text" name="fourth" class="letterInput correct" value="i">';
         }
         if ($_POST["fifth"]!="l"){
           echo'<input type="text" name="fifth" class="letterInput" value="">';
         }else if($_POST["reset"]){
           echo'<input type="text" name="fifth" class="letterInput" value="">';
-        } else if ($_POST["fourth"]=="l"){
+        } else if ($_POST["fifth"]=="l"){
           echo'<input type="text" name="fifth" class="letterInput correct" value="l">';
         }
 
@@ -74,14 +74,13 @@
       <br>
       <?php
       if(isset( $_POST["clues"])) {
-        echo '<p>The start of spring<p>';
+        echo '<p>The start of spring</p>';
       }
 
        ?>
       <?php
       if ($_POST["reset"]){
         file_put_contents("score_tracker.txt", 4);
-       }
        }
        ?>
     </fieldset>
@@ -92,7 +91,7 @@
 <?php
   $file = 'score_tracker.txt';
   $trials = intval(file_get_contents($file));
-  if ($trials <= 0){
+  if ($trials == 0){
     echo '<h3> Game Over. <h3>';
     echo '<a href="index.php">Back to main page</a>';
     file_put_contents($file, 4);
@@ -106,8 +105,8 @@
       }
       if ($finalWord=="aprilSubmit"){
       echo 'Congratulations, you completed this level. <a href="level4.php">Next level</a>';
-      $score="Level 3, ".$username.",".($trials*2)."\n";
-      file_put_contents("users_score.txt", $score);
+      $score="Level 2, ".$username.",".($trials*2)."\n";
+      file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
       file_put_contents($file, 4);
       }
      else{
