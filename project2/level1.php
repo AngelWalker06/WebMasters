@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <?php include "header.php"; ?>
   <?php
   session_start();
   echo $_SESSION['username'];
@@ -26,7 +27,7 @@
   echo $_SESSION['score4'];
   echo $_SESSION['score5'];
   ?>
-<?php include "header.php"; ?>
+
     <h1>Hello <?php echo $_SESSION['username']; ?></h1>
     <h2>level 1</h2>
     <a href="#">Leaderboard</a>
