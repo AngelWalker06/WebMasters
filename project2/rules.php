@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>rules</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
-    <?php include("header.php") ?>
+  <body class="wrapper">
+    <?php include "header.php"; ?>
     <h1>Rules of the Game</h1>
     <ol>
       <li>There five levels to this Game</li>
@@ -17,7 +18,7 @@
       <li>The more trials you use the lower the score</li>
       <li>You also have one use clue</li>
      </ol>
-    <?php include("footer.php") ?>
+    <?php include "footer.php"; ?>
 
   </body>
 </html>
