@@ -1,4 +1,4 @@
-<?php session_save_path("session"); 
+<?php session_save_path("session");
   session_start();
   $username = $_SESSION['username'];?>
 <!DOCTYPE html>
@@ -31,33 +31,33 @@
       <p>A programming language</p>
       <?php
       if ($_POST["first"]!="h"){
-        echo'<input type="text" name="first" class="letterInput" value="">';
+        echo'<input type="text" name="first" class="letterInput" value=""  maxlength ="1">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="first" class="letterInput" value="">';
+        echo'<input type="text" name="first" class="letterInput" value=""  maxlength ="1">';
       }else if ($_POST["first"]=="h"){
-        echo'<input type="text" name="first" class="letterInput correct" value="h">';
+        echo'<input type="text" name="first" class="letterInput correct" value="h"  maxlength ="1">';
       }
 
       if ($_POST["second"]!="t"){
-        echo'<input type="text" name="second" class="letterInput" value="">';
+        echo'<input type="text" name="second" class="letterInput" value=""  maxlength ="1">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="second" class="letterInput" value="">';
+        echo'<input type="text" name="second" class="letterInput" value=""  maxlength ="1">';
       }else if ($_POST["second"]=="t"){
-        echo'<input type="text" name="second" class="letterInput correct" value="t">';
+        echo'<input type="text" name="second" class="letterInput correct" value="t"  maxlength ="1">';
       }
       if ($_POST["third"]!="m"){
-        echo'<input type="text" name="third" class="letterInput" value="">';
+        echo'<input type="text" name="third" class="letterInput" value=""  maxlength ="1">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="third" class="letterInput" value="">';
+        echo'<input type="text" name="third" class="letterInput" value=""  maxlength ="1">';
       } else if ($_POST["third"]=="m"){
-        echo'<input type="text" name="third" class="letterInput correct" value="m">';
+        echo'<input type="text" name="third" class="letterInput correct" value="m"  maxlength ="1">';
       }
       if ($_POST["fourth"]!="l"){
-        echo'<input type="text" name="fourth" class="letterInput" value="">';
+        echo'<input type="text" name="fourth" class="letterInput" value=""  maxlength ="1">';
       }else if($_POST["reset"]){
-        echo'<input type="text" name="fourth" class="letterInput" value="">';
+        echo'<input type="text" name="fourth" class="letterInput" value=""  maxlength ="1">';
       } else if ($_POST["fourth"]=="l"){
-        echo'<input type="text" name="fourth" class="letterInput correct" value="l">';
+        echo'<input type="text" name="fourth" class="letterInput correct" value="l"  maxlength ="1">';
       }
 
        ?>
@@ -103,20 +103,20 @@
 	echo 'Congratulations, you completed this level. <a href="level3.php">Next level</a>';
       $score = $trials * 2;
       //file_put_contents("users_score.txt", $score);
-	  
+
 		//added code
 		$valid = true;
-		//sets file equal to calling for the users file 
+		//sets file equal to calling for the users file
 		$file = file('userdata.txt');
 		//sets count equal to the the amount of lines (which is the same as the number of users) in the file
 		$count = count($file);
 		//set topFive equal to the top five of the user list
-		
+
 		//sets fullFile equal to all of the users' information within the file
 		$fullFile = file_get_contents('userdata.txt');
 		//sets the array into separate users per element/index
 		$users = explode("\n", $fullFile);
-		
+
 		//find user in text file to update by running through the whole file
 		for ($i=0;$i<count($users);$i++){
 			//splits string into each piece of info of the current user
@@ -132,7 +132,7 @@
 				break;
 			}
 		}
-		
+
 		//checks validity
 		if ($valid == true){
 			//adds the user's info into the existing users list

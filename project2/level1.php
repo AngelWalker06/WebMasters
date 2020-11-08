@@ -1,6 +1,6 @@
-<?php 
-	session_save_path("session"); 
-	session_start(); 
+<?php
+	session_save_path("session");
+	session_start();
 	$username = $_SESSION['username'];?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -31,56 +31,56 @@
       <p>The name of something you are doing right now</p>
       <?php
       if ($_POST["first"] != "h") {
-        echo '<input type="text" name="first" class="letterInput" value="">';
+        echo '<input type="text" name="first" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="first" class="letterInput" value="">';
+        echo '<input type="text" name="first" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["first"] == "h") {
-        echo '<input type="text" name="first" class="letterInput correct" value="h">';
+        echo '<input type="text" name="first" class="letterInput correct" value="h" maxlength ="1">';
       }
 
       if ($_POST["second"] != "a") {
-        echo '<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["second"] == "a") {
-        echo '<input type="text" name="second" class="letterInput correct" value="a">';
+        echo '<input type="text" name="second" class="letterInput correct" value="a" maxlength ="1">';
       }
 
       if ($_POST["third"] != "n") {
-        echo '<input type="text" name="third" class="letterInput" value="">';
+        echo '<input type="text" name="third" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="third" class="letterInput" value="">';
+        echo '<input type="text" name="third" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["third"] == "n") {
-        echo '<input type="text" name="third" class="letterInput correct" value="n">';
+        echo '<input type="text" name="third" class="letterInput correct" value="n" maxlength ="1">';
       }
       if ($_POST["fourth"] != "g") {
-        echo '<input type="text" name="fourth" class="letterInput" value="">';
+        echo '<input type="text" name="fourth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="fourth" class="letterInput" value="">';
+        echo '<input type="text" name="fourth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["fourth"] == "g") {
-        echo '<input type="text" name="fourth" class="letterInput correct" value="g">';
+        echo '<input type="text" name="fourth" class="letterInput correct" value="g" maxlength ="1">';
       }
       if ($_POST["fifth"] != "m") {
-        echo '<input type="text" name="fifth" class="letterInput" value="">';
+        echo '<input type="text" name="fifth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="fifth" class="letterInput" value="">';
+        echo '<input type="text" name="fifth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["fifth"] == "m") {
-        echo '<input type="text" name="fifth" class="letterInput correct" value="m">';
+        echo '<input type="text" name="fifth" class="letterInput correct" value="m" maxlength ="1">';
       }
 
       if ($_POST["sixth"] != "a") {
-        echo '<input type="text" name="sixth" class="letterInput" value="">';
+        echo '<input type="text" name="sixth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="sixth" class="letterInput" value="">';
+        echo '<input type="text" name="sixth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["sixth"] == "a") {
-        echo '<input type="text" name="sixth" class="letterInput correct" value="a">';
+        echo '<input type="text" name="sixth" class="letterInput correct" value="a" maxlength ="1">';
       }
       if ($_POST["seventh"] != "n") {
-        echo '<input type="text" name="seventh" class="letterInput" value="">';
+        echo '<input type="text" name="seventh" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="seventh" class="letterInput" value="">';
+        echo '<input type="text" name="seventh" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["seventh"] == "n") {
-        echo '<input type="text" name="seventh" class="letterInput correct" value="n">';
+        echo '<input type="text" name="seventh" class="letterInput correct" value="n" maxlength ="1">';
       }
       ?>
 
@@ -117,20 +117,20 @@ if ($trials <= 0) {
       echo 'Congratulations, you completed this level. <a href="level2.php">Next level</a>';
       $score = $trials * 2;
       //file_put_contents("users_score.txt", $score);
-	  
+
 		//added code
 		$valid = true;
-		//sets file equal to calling for the users file 
+		//sets file equal to calling for the users file
 		$file = file('userdata.txt');
 		//sets count equal to the the amount of lines (which is the same as the number of users) in the file
 		$count = count($file);
 		//set topFive equal to the top five of the user list
-		
+
 		//sets fullFile equal to all of the users' information within the file
 		$fullFile = file_get_contents('userdata.txt');
 		//sets the array into separate users per element/index
 		$users = explode("\n", $fullFile);
-		
+
 		//find user in text file to update by running through the whole file
 		for ($i=0;$i<count($users);$i++){
 			//splits string into each piece of info of the current user
@@ -146,7 +146,7 @@ if ($trials <= 0) {
 				break;
 			}
 		}
-		
+
 		//checks validity
 		if ($valid == true){
 			//adds the user's info into the existing users list

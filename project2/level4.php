@@ -32,40 +32,40 @@ $username = $_SESSION['username'];
       <p>Something you wear</p>
       <?php
       if ($_POST["first"] != "p") {
-        echo '<input type="text" name="first" class="letterInput" value="">';
+        echo '<input type="text" name="first" class="letterInput" value=""  maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="first" class="letterInput" value="">';
+        echo '<input type="text" name="first" class="letterInput" value=""  maxlength ="1">';
       } elseif ($_POST["first"] == "p") {
-        echo '<input type="text" name="first" class="letterInput correct" value="p">';
+        echo '<input type="text" name="first" class="letterInput correct" value="p" maxlength ="1">';
       }
 
       if ($_POST["second"] != "a") {
-        echo '<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="second" class="letterInput" value="">';
+        echo '<input type="text" name="second" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["second"] == "a") {
-        echo '<input type="text" name="second" class="letterInput correct" value="a">';
+        echo '<input type="text" name="second" class="letterInput correct" value="a" maxlength ="1">';
       }
       if ($_POST["third"] != "n") {
-        echo '<input type="text" name="third" class="letterInput" value="">';
+        echo '<input type="text" name="third" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="third" class="letterInput" value="">';
+        echo '<input type="text" name="third" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["third"] == "n") {
-        echo '<input type="text" name="third" class="letterInput correct" value="n">';
+        echo '<input type="text" name="third" class="letterInput correct" value="n" maxlength ="1">';
       }
       if ($_POST["fourth"] != "t") {
-        echo '<input type="text" name="fourth" class="letterInput" value="">';
+        echo '<input type="text" name="fourth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="fourth" class="letterInput" value="">';
+        echo '<input type="text" name="fourth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["fourth"] == "t") {
-        echo '<input type="text" name="fourth" class="letterInput correct" value="t">';
+        echo '<input type="text" name="fourth" class="letterInput correct" value="t" maxlength ="1">';
       }
       if ($_POST["fifth"] != "s") {
-        echo '<input type="text" name="fifth" class="letterInput" value="">';
+        echo '<input type="text" name="fifth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["reset"]) {
-        echo '<input type="text" name="fifth" class="letterInput" value="">';
+        echo '<input type="text" name="fifth" class="letterInput" value="" maxlength ="1">';
       } elseif ($_POST["fifth"] == "s") {
-        echo '<input type="text" name="fifth" class="letterInput correct" value="s">';
+        echo '<input type="text" name="fifth" class="letterInput correct" value="s" maxlength ="1">';
       }
       ?>
 
