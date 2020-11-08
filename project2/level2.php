@@ -21,7 +21,7 @@
   <body>
     <?php include("header.php") ?>
     <h1>Hello <?php echo $username; ?>!</h1>
-    <h2>level 2</h2>
+    <h2>Level 2</h2>
     <a href="leaderboard2.php">Leaderboard</a>
     <br>
     <br>
