@@ -21,7 +21,7 @@
   <body>
     <?php include("header.php") ?>
     <h1>Username <?php $username; ?></h1>
-    <h2>level 1</h2>
+    <h2>level 3</h2>
     <a href="leaderboard2.php">Leaderboard</a>
     <br>
     <br>
@@ -100,6 +100,7 @@
         $finalWord .= $value;
       }
       if ($finalWord=="htmlSubmit"){
+	echo 'Congratulations, you completed this level. <a href="level3.php">Next level</a>';
       $score = $trials * 2;
       //file_put_contents("users_score.txt", $score);
 	  
