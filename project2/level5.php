@@ -100,6 +100,7 @@
         $finalWord .= $value;
       }
       if ($finalWord=="eggsSubmit"){
+	echo 'Congratulations, you completed this level.' ;
       $score = $trials * 2;
       //file_put_contents("users_score.txt", $score);
 	  
