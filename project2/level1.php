@@ -6,7 +6,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>level 1</title>
+    <title>Level 1</title>
     <style media="screen">
       .letterInput{
         width: 20px;
