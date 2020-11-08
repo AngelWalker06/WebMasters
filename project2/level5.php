@@ -5,7 +5,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>level 5</title>
+    <title>Level 5</title>
     <style media="screen">
       .letterInput{
         width: 20px;
@@ -20,8 +20,8 @@
 
   <body>
     <?php include("header.php") ?>
-    <h1>Username <?php echo $username; ?></h1>
-    <h2>level 1</h2>
+    <h1>Hello <?php echo $username; ?>!</h1>
+    <h2>Level 5</h2>
     <a href="leaderboard5.php">Leaderboard</a>
     <br>
     <br>
@@ -125,7 +125,7 @@
 			//checks if current user is the user that is being updated
 			if ($current[0] == $username){
 				//create new string with updated score
-				$updateUser = $current[0].",".$current[0].",".$current[2].",".$current[3].",".
+				$updateUser = $current[0].",".$current[1].",".$current[2].",".$current[3].",".
 								$current[4].",".$score.",".$current[6];
 				//replace string in the text file with new updated info
 				$fullFile = str_replace($users[$i],$updateUser,$fullFile);
