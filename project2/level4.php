@@ -16,6 +16,7 @@ $username = $_SESSION['username'];
       }
 
     </style>
+    <link rel="stylesheet" href="levels.css">
   </head>
 
   <body>
