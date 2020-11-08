@@ -15,7 +15,7 @@
 <body>
 	<?php include("header.php") ?>
 	<h1 style = "text-align: center">Top 5 Leaderboard</h1>
-	<h2 style = "text-align: center">Level 2</h2>
+	<h2 style = "text-align: center">Level 4</h2>
 	<?php
 		//sets file equal to calling for the users file 
 		$file = file('userdata.txt');
