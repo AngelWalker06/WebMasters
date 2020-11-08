@@ -1,4 +1,6 @@
-<?php session_save_path("session"); ?>
+<?php session_save_path("session");
+      session_start();
+      $username = $_SESSION['username'];?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -17,7 +19,7 @@
 
   <body>
     <?php include("header.php") ?>
-    <h1>Username <?php //echo $_POST['username'] ?></h1>
+    <h1>Username <?php echo $username; ?></h1>
     <h2>level 1</h2>
     <a href="#">Leaderboard</a>
     <br>
@@ -106,9 +108,44 @@
       }
       if ($finalWord=="pantsSubmit"){
       echo 'Congratulations, you completed this level. <a href="level5.php">Next level</a>';
-      $score="Level 2, ".$username.",".($trials*2)."\n";
-      file_put_contents("users_score.txt", $score, FILE_APPEND | LOCK_EX);
-      file_put_contents($file, 4);
+      $score = $trials * 2;
+      //file_put_contents("users_score.txt", $score);
+	  
+		//added code
+		$valid = true;
+		//sets file equal to calling for the users file 
+		$file = file('userdata.txt');
+		//sets count equal to the the amount of lines (which is the same as the number of users) in the file
+		$count = count($file);
+		//set topFive equal to the top five of the user list
+		
+		//sets fullFile equal to all of the users' information within the file
+		$fullFile = file_get_contents('userdata.txt');
+		//sets the array into separate users per element/index
+		$users = explode("\n", $fullFile);
+		
+		//find user in text file to update by running through the whole file
+		for ($i=0;$i<count($users);$i++){
+			//splits string into each piece of info of the current user
+			$current = explode(",", $users[$i]);
+			//checks if current user is the user that is being updated
+			if ($current[0] == $username){
+				//create new string with updated score
+				$updateUser = $current[0].",".$current[1].",".$current[2].",".$current[3].",".
+								$score.",".$current[5].",".$current[6];
+				//replace string in the text file with new updated info
+				$fullFile = str_replace($users[$i],$updateUser,$fullFile);
+				//stop once found
+				break;
+			}
+		}
+		
+		//checks validity
+		if ($valid == true){
+			//adds the user's info into the existing users list
+			file_put_contents('userdata.txt',$fullFile);
+		}
+		file_put_contents($file, 4);
       }
      else{
       echo 'You must complete this level to move on';
