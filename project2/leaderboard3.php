@@ -67,7 +67,7 @@
 				<!--print name-->
 				<p style = "float: left"><?php print $oneUser[0]; ?></p>
 				<!--print score-->
-				<p style = "float: right"><?php print $oneUser[1]; ?></p>
+				<p style = "float: right"><?php print $oneUser[3]; ?></p>
 			</div>
 			<div style ="clear:both;"></div>
 		<?php
