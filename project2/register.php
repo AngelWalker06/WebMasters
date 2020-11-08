@@ -1,3 +1,5 @@
+<?php session_save_path("session"); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
