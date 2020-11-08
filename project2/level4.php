@@ -19,8 +19,8 @@
 
   <body>
     <?php include("header.php") ?>
-    <h1>Username <?php echo $username; ?></h1>
-    <h2>level 1</h2>
+    <h1>Hello <?php echo $username; ?>!</h1>
+    <h2>Level 4</h2>
     <a href="#">Leaderboard</a>
     <br>
     <br>
