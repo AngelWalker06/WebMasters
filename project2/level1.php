@@ -122,6 +122,7 @@ if ($trials == 0) {
       $finalWord .= $value;
     }
     if ($finalWord == "hangmanSubmit") {
+	echo 'Congratulations, you completed this level. <a href="level2.php">Next level</a>';
       $score = $trials * 2;
       //file_put_contents("users_score.txt", $score);
 	  
