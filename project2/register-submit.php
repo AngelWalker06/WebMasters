@@ -1,4 +1,5 @@
-
+<?php session_save_path("session"); ?>
+<?php session_start(); ?>
 <?php
 $errors = [];
 $user = [
