@@ -15,7 +15,7 @@
 <body>
 	<?php include("header.php") ?>
 	<h1 style = "text-align: center">Top 5 Leaderboard</h1>
-	<h2 style = "text-align: center">Level 2</h2>
+	<h2 style = "text-align: center">Level 5</h2>
 	<?php
 		//sets file equal to calling for the users file 
 		$file = file('userdata.txt');
@@ -67,7 +67,7 @@
 				<!--print name-->
 				<p style = "float: left"><?php print $oneUser[0]; ?></p>
 				<!--print score-->
-				<p style = "float: right"><?php print $oneUser[1]; ?></p>
+				<p style = "float: right"><?php print $oneUser[5]; ?></p>
 			</div>
 			<div style ="clear:both;"></div>
 		<?php
