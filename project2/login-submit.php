@@ -38,7 +38,7 @@ $_SESSION['score5'] = $user_details[5];
 </head>
 <body class="wrapper"> 
   <div>
- Thanks for logging in! <?php echo $user_details[1]; ?> Let's play game now!</br>
+ Thanks for logging in! Let's play a game now!</br>
  <a class="btn btn-primary" href="level1.php" role="button">Level 1</a></br>
  <a class="btn btn-primary" href="level2.php" role="button">Level 2</a></br>
  <a class="btn btn-primary" href="level3.php" role="button">Level 3</a></br>
