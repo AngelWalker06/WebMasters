@@ -20,6 +20,7 @@
   </head>
 
   <body>
+	<?php include("header.php") ?>
     <h1>Hello <?php echo $username; ?>!</h1>
     <h2>Level 1</h2>
     <a href="leaderboard1.php">Leaderboard</a>
