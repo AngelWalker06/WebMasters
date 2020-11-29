@@ -1,0 +1,36 @@
+/*
+	Web Programming Section 1
+	Project 3
+	
+	This is the css page for the fifteen puzzle game.
+*/
+/*tile format*/
+.square{
+	height: 96px;
+	width: 96px;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	text-align: center;
+	font-size: 32px;
+	position: relative;
+	color: red;
+}
+
+/*table format*/
+table {
+	border-spacing: 3px;
+	background-color: black;
+}
+
+/*bg image format*/
+img {
+	width: 100px;
+	height: 100px;
+}
+
+/*border color on hover*/
+/*change this for only certain tiles later*/
+td:hover {
+  border-color: #006600;
+}

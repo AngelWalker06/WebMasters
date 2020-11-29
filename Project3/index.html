@@ -1,0 +1,35 @@
+<!--
+	Web Programming Section 1
+	Project 3
+	
+	This is the index page for the fifteen puzzle game.
+-->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<link rel="stylesheet" href="p3style.css">
+</head>
+<body onload = "load()">
+	<h1>Main Puzzle</h1>
+	
+	<h2 id = "response" class = "whiteColor">Do you want a cat, dog, bunny, or bird?</h2>
+	<div id = "winGame"></div>
+	<input type="text" name="picNum" id = "picNum" size="8" style="text-align:center">
+	
+	<br />
+	<br />
+	
+	<button type = "button" id = "button" onclick = "playGame()">Play</button>
+	<button type = "button" id = "button" onclick = "shuffleMe()">Shuffle</button>
+	
+	<br />
+	<br />
+	
+	<table id = "puzzle">
+	</table>
+
+	<script src="gamescript.js"></script>
+</body>
+</html>
