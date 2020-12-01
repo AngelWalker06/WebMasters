@@ -1,0 +1,54 @@
+	<!--
+		Web Programming Section 1
+		Project 3
+
+	This is the index page for the fifteen puzzle game.
+-->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<link rel="stylesheet" href="p3style.css">
+</head>
+
+<body onload = "load()">
+	<audio id="myAudio">
+	<source src="JeopardyMusic.mp3" type="audio/mpeg">
+	Your browser does not support the audio element.
+	</audio>
+     <div class="stopwatch">
+       <div class="circle">
+         <span class="time" id="display">00:00:00</span>
+       </div>
+     </div>
+		 <h1>Main Puzzle</h1>
+     <script src="script.js"></script>
+   </body>
+	<h2 id = "response" class = "whiteColor">Do you want a cat, dog, bunny, or bird?</h2>
+	<div id = "winGame"></div>
+	<input type="text" name="picNum" id = "picNum" size="8" style="text-align:center">
+
+	<button type = "button" id = "button" onclick = "playGame()">Enter Choice</button>
+
+	<br/>
+	<br/>
+
+
+	<table id = "puzzle"></table>
+
+
+	<div class="controls">
+ 	 <button class="buttonPlay" onclick = "shuffleMe();playAudio()">
+ 		 <img id="playButton" src="https://www.flaticon.com/svg/static/icons/svg/17/17550.svg"/>
+
+ 	 </button>
+
+ 	 <button class="buttonReset" onclick = "playGame();pauseAudio()">
+ 		 <img id="resetButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/reset-button_mdv6wf.svg"/>
+ 	 </button>
+
+	 	<script src="gamescript.js"></script>
+
+	</body>
+</html>
