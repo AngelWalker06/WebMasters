@@ -91,8 +91,8 @@ function playGame(){
 	}
 	//if user did not enter a valid input, reprompt them to enter a valid input and stop
 	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
-		reset();
 		alert("Please enter cat, dog, bunny, or bird.");
+		reset();
 	}
 	//otherwise if valid input is given
 	else {
@@ -357,6 +357,7 @@ function shuffleMe(){
 		}
 	}
 }
+
 
 
 function timeToString(time) {
