@@ -484,31 +484,164 @@ function checkLeft(x,y){
 	}
 }
 
-//shuffle function
-//NOTE !! TOO RANDOMIZED - NEEDS TO BE FIXED !!
-function shuffleMe(){
+/* Below is the code used to highlight neighboring tiles of the empty tile when a mouse is hovered over it. */
+
+//function to find empty tile and its neighbors
+function aroundEmptyTile(){
 	for (var x=0;x<4;x++){
+		//run through the cells in rows
 		for (var y=0;y<4;y++){
-			//find random second cell to work with
-			otherX = Math.floor(Math.random()*4);
-			otherY = Math.floor(Math.random()*4);
-
-			//set other values to above tile
-			otherIndex = table.rows[otherX].cells[otherY].innerHTML;
-			otherImage = table.rows[otherX].cells[otherY].style.cssText;
-
-			//set current values to current tile
-			currentIndex = table.rows[x].cells[y].innerHTML;
-			currentCSS = table.rows[x].cells[y].style.cssText;
-
-			//switch current tile values to the above tile's values
-			table.rows[x].cells[y].innerHTML = otherIndex;
-			table.rows[x].cells[y].style.cssText = otherImage;
-
-			//switch the above tile values to the current tile's initial values
-			table.rows[otherX].cells[otherY].innerHTML = currentIndex;
-			table.rows[otherX].cells[otherY].style.cssText = currentCSS;
+		//if empty tile is found
+		if (table.rows[x].cells[y].innerHTML == ""){
+				colorTiles(x,y);
+			}
 		}
+	}
+}
+
+//function to color neighboring tiles on hover
+function colorTiles(x,y){
+	//if end row
+	if (x == table.rows.length-1){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			hoverLeft(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			hoverRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			hoverLeft(x,y);
+			hoverRight(x,y);
+		}
+		//check above in all cases
+		hoverAbove(x,y);
+	}
+	//if top row
+	else if (x == 0){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			hoverLeft(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			hoverRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			hoverLeft(x,y);
+			hoverRight(x,y);
+		}
+		//check below in all cases
+		hoverBelow(x,y);
+	}
+	//otherwise in middle rows
+	else {
+		//if right end
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			hoverLeft(x,y);
+		}
+		//if left end
+		else if (y == 0){
+			//check right
+			hoverRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			hoverLeft(x,y);
+			hoverRight(x,y);
+		}
+		//check above and below in all cases
+		hoverAbove(x,y);
+		hoverBelow(x,y);
+	}
+}
+
+//check if there is a neighbor tile below the empty tile
+function hoverBelow(x,y){
+	if (table.rows[x+1].cells[y] != ""){
+		//add hover effect if so
+		table.rows[x+1].cells[y].classList.add("moveablepiece");
+	}
+}
+
+//check if there is a neighbor tile above the empty tile
+function hoverAbove(x,y){
+	if (table.rows[x-1].cells[y] != ""){
+		//add hover effect if so
+		table.rows[x-1].cells[y].classList.add("moveablepiece");
+	}
+}
+
+//check if there is a neighbor tile to the right of the empty tile
+function hoverRight(x,y){
+	if (table.rows[x].cells[y+1] != ""){
+		//add hover effect if so
+		table.rows[x].cells[y+1].classList.add("moveablepiece");
+	}
+}
+
+//check if there is a neighbor tile to the left of the empty tile
+function hoverLeft(x,y){
+	if (table.rows[x].cells[y-1] != ""){
+		//add hover effect if so
+		table.rows[x].cells[y-1].classList.add("moveablepiece");
+	}
+}
+
+/*Below is the code used for when the game is won.*/
+
+//default values for checking
+var gameWin = false;
+var checkIndex = 1;
+var checkHTML = "";
+
+//function for checking if puzzle is in place
+function checkWin(){
+	//reset values
+	document.getElementById("gameWin").innerHTML = "-";
+	gameWin = false;
+	checkIndex = 1;
+	//run through all rows
+	for (var x=0;x<4;x++){
+		//run through all cells per row
+		for (var y=0;y<4;y++){
+			//set variable to current html value needed to see if tile is in place
+			checkHTML = "<div>" + checkIndex + "</div>";
+			//if at last tile, check if the html value is empty (for the empty tile)
+			if (x == 3 && y == 3){
+				if (table.rows[x].cells[y].innerHTML == ""){
+					gameWin = true;
+					checkIndex++;
+				}
+				else {
+					gameWin = false;
+				}
+			}
+			else {
+				if (table.rows[x].cells[y].innerHTML == checkHTML){
+					gameWin = true;
+					checkIndex++;
+				}
+				else {
+					gameWin = false;
+				}
+			}
+		}
+	}
+	if (gameWin == true){
+		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed!";
+		gameWin = false;
 	}
 }
 
