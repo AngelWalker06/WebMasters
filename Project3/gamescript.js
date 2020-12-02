@@ -184,6 +184,8 @@ function resetNeighbor(x,y){
 				table.rows[x].cells[y].classList.remove("moveablepiece");
 			}
 		}
+	}
+}
 	
 
 //move tile function
