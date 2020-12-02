@@ -238,11 +238,162 @@ function move(x,y){
 		checkBelow(x,y);
 	}
 }
+/////////////////////////////////////////////////////////////////////
+//									Animation function
+
+//Takes coordinates of blank tile and movable tile as param
+
+//Downward animation
+function downardSwitch(x,y){
+	//get cells to be swithed
+	var current =table.rows[x].cells[y];
+	var empty =table.rows[x+1].cells[y];
+
+	//get positionsto change
+	var top = window.getComputedStyle(current,
+	 null).getPropertyValue("top");
+	 top= Math.round(top.substr(0, top.indexOf('p')));
+
+	 var h1 = window.getComputedStyle(current,
+		null).getPropertyValue("height");
+		h = Math.round(h1.substr(0, h1.indexOf('p')));
+
+
+
+// start animation
+  var id = setInterval(frame, 3);
+  function frame() {
+    if (top >= h+8) {
+      clearInterval(id);
+			table.rows[x].cells[y].innerHTML = otherIndex;
+			table.rows[x].cells[y].style.cssText = otherImage;
+			table.rows[x+1].cells[y].innerHTML = currentIndex;
+		 table.rows[x+1].cells[y].style.cssText = currentCSS;
+	     } else {
+			top++;
+      current.style.top= top+"px";
+    }
+ }
+}
+
+//Upard animation
+function upwwardSwitch(x,y){
+	//get cells to be swithed
+	var current =table.rows[x].cells[y];
+	var empty =table.rows[x-1].cells[y];
+
+	//get positionsto change
+	var bottom = window.getComputedStyle(current,
+	 null).getPropertyValue("bottom");
+	 bottom= Math.round(bottom.substr(0, bottom.indexOf('p')));
+
+	 var h1 = window.getComputedStyle(current,
+		null).getPropertyValue("height");
+		h = Math.round(h1.substr(0, h1.indexOf('p')));
+
+
+
+// start animation
+  var id = setInterval(frame, 3);
+  function frame() {
+    if (bottom >= h+8) {
+      clearInterval(id);
+			//switch current tile values to the above tile's values
+			table.rows[x].cells[y].innerHTML = otherIndex;
+			table.rows[x].cells[y].style.cssText = otherImage;
+
+			// switch the above tile values to the current tile's initial values
+			table.rows[x-1].cells[y].innerHTML = currentIndex;
+			table.rows[x-1].cells[y].style.cssText = currentCSS;
+    } else {
+			bottom++;
+      current.style.bottom= bottom+"px";
+    }
+ }
+}
+
+//rightward animation
+function rightwardSwitch(x,y){
+	//get cells to be swithed
+	var current =table.rows[x].cells[y];
+	var empty =table.rows[x].cells[y+1];
+
+	//get positionsto change
+	var left = window.getComputedStyle(current,
+	 null).getPropertyValue("left");
+	 left= Math.round(left.substr(0, left.indexOf('p')));
+
+	 var w1 = window.getComputedStyle(current,
+		null).getPropertyValue("width");
+		w = Math.round(w1.substr(0, w1.indexOf('p')));
+
+
+
+// start animation
+  var id = setInterval(frame, 3);
+  function frame() {
+    if (left >= w+8) {
+      clearInterval(id);
+			//switch current tile values to the above tile's values
+			table.rows[x].cells[y].innerHTML = otherIndex;
+			table.rows[x].cells[y].style.cssText = otherImage;
+			//
+			// //switch the above tile values to the current tile's initial values
+			table.rows[x].cells[y+1].innerHTML = currentIndex;
+			table.rows[x].cells[y+1].style.cssText = currentCSS;
+    } else {
+			left++;
+      current.style.left= left+"px";
+    }
+ }
+}
+
+
+//lefttward animation
+function leftwardSwitch(x,y){
+	//get cells to be swithed
+	var current =table.rows[x].cells[y];
+	var empty =table.rows[x].cells[y-1];
+
+	//get positionsto change
+	var right = window.getComputedStyle(current,
+	 null).getPropertyValue("right");
+	 right= Math.round(right.substr(0, right.indexOf('p')));
+
+	 var w1 = window.getComputedStyle(current,
+		null).getPropertyValue("width");
+		w = Math.round(w1.substr(0, w1.indexOf('p')));
+
+
+
+// start animation
+  var id = setInterval(frame, 3);
+  function frame() {
+    if (right >= w+8) {
+      clearInterval(id);
+			//switch current tile values to the above tile's values
+			table.rows[x].cells[y].innerHTML = otherIndex;
+			table.rows[x].cells[y].style.cssText = otherImage;
+			//
+			// //switch the above tile values to the current tile's initial values
+			table.rows[x].cells[y-1].innerHTML = currentIndex;
+			table.rows[x].cells[y-1].style.cssText = currentCSS;
+    } else {
+			right++;
+      current.style.right= right+"px";
+    }
+ }
+}
+
+
+
+///////////////////////////////////////////////////////////////////
 
 //switch tiles if the tile below the current tile is empty
 function checkBelow(x,y){
 	//if the tile below is empty
 	if (table.rows[x+1].cells[y].innerHTML == ""){
+		downardSwitch(x,y);
 		//set other values to above tile
 		otherIndex = table.rows[x+1].cells[y].innerHTML;
 		otherImage = table.rows[x+1].cells[y].style.cssText;
@@ -252,12 +403,12 @@ function checkBelow(x,y){
 		currentCSS = table.rows[x].cells[y].style.cssText;
 
 		//switch current tile values to the above tile's values
-		table.rows[x].cells[y].innerHTML = otherIndex;
-		table.rows[x].cells[y].style.cssText = otherImage;
-
-		//switch the above tile values to the current tile's initial values
-		table.rows[x+1].cells[y].innerHTML = currentIndex;
-		table.rows[x+1].cells[y].style.cssText = currentCSS;
+		// table.rows[x].cells[y].innerHTML = otherIndex;
+		// table.rows[x].cells[y].style.cssText = otherImage;
+		//
+		// //switch the above tile values to the current tile's initial values
+		// table.rows[x+1].cells[y].innerHTML = currentIndex;
+		// table.rows[x+1].cells[y].style.cssText = currentCSS;
 	}
 }
 
@@ -265,6 +416,7 @@ function checkBelow(x,y){
 function checkAbove(x,y){
 	//if the tile above is empty
 	if (table.rows[x-1].cells[y].innerHTML == ""){
+		upwwardSwitch(x,y)
 		//set other values to above tile
 		otherIndex = table.rows[x-1].cells[y].innerHTML;
 		otherImage = table.rows[x-1].cells[y].style.cssText;
@@ -274,12 +426,12 @@ function checkAbove(x,y){
 		currentCSS = table.rows[x].cells[y].style.cssText;
 
 		//switch current tile values to the above tile's values
-		table.rows[x].cells[y].innerHTML = otherIndex;
-		table.rows[x].cells[y].style.cssText = otherImage;
+		// table.rows[x].cells[y].innerHTML = otherIndex;
+		// table.rows[x].cells[y].style.cssText = otherImage;
 
 		//switch the above tile values to the current tile's initial values
-		table.rows[x-1].cells[y].innerHTML = currentIndex;
-		table.rows[x-1].cells[y].style.cssText = currentCSS;
+		// table.rows[x-1].cells[y].innerHTML = currentIndex;
+		// table.rows[x-1].cells[y].style.cssText = currentCSS;
 	}
 }
 
@@ -287,6 +439,7 @@ function checkAbove(x,y){
 function checkRight(x,y){
 	//if the tile to the right is empty
 	if (table.rows[x].cells[y+1].innerHTML == ""){
+		rightwardSwitch(x,y)
 		//set other values to above tile
 		otherIndex = table.rows[x].cells[y+1].innerHTML;
 		otherImage = table.rows[x].cells[y+1].style.cssText;
@@ -296,12 +449,12 @@ function checkRight(x,y){
 		currentCSS = table.rows[x].cells[y].style.cssText;
 
 		//switch current tile values to the above tile's values
-		table.rows[x].cells[y].innerHTML = otherIndex;
-		table.rows[x].cells[y].style.cssText = otherImage;
-
-		//switch the above tile values to the current tile's initial values
-		table.rows[x].cells[y+1].innerHTML = currentIndex;
-		table.rows[x].cells[y+1].style.cssText = currentCSS;
+		// table.rows[x].cells[y].innerHTML = otherIndex;
+		// table.rows[x].cells[y].style.cssText = otherImage;
+		//
+		// //switch the above tile values to the current tile's initial values
+		// table.rows[x].cells[y+1].innerHTML = currentIndex;
+		// table.rows[x].cells[y+1].style.cssText = currentCSS;
 	}
 }
 
@@ -309,6 +462,7 @@ function checkRight(x,y){
 function checkLeft(x,y){
 	//if the tile to the left is empty
 	if (table.rows[x].cells[y-1].innerHTML == ""){
+		 leftwardSwitch(x,y)
 		//set other values to above tile
 		otherIndex = table.rows[x].cells[y-1].innerHTML;
 		otherImage = table.rows[x].cells[y-1].style.cssText;
@@ -318,12 +472,12 @@ function checkLeft(x,y){
 		currentCSS = table.rows[x].cells[y].style.cssText;
 
 		//switch current tile values to the above tile's values
-		table.rows[x].cells[y].innerHTML = otherIndex;
-		table.rows[x].cells[y].style.cssText = otherImage;
-
-		//switch the above tile values to the current tile's initial values
-		table.rows[x].cells[y-1].innerHTML = currentIndex;
-		table.rows[x].cells[y-1].style.cssText = currentCSS;
+		// table.rows[x].cells[y].innerHTML = otherIndex;
+		// table.rows[x].cells[y].style.cssText = otherImage;
+		//
+		// //switch the above tile values to the current tile's initial values
+		// table.rows[x].cells[y-1].innerHTML = currentIndex;
+		// table.rows[x].cells[y-1].style.cssText = currentCSS;
 	}
 	else {
 		//alert("left doesn't work!");
