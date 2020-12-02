@@ -81,7 +81,14 @@ function playGame(){
 		//get actual user input from the text box
 		userReply = document.getElementById("picNum").value;
 	}
-	//default values
+	//if user did not enter a valid input, reprompt them to enter a valid input and stop
+	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
+		alert("Please enter cat, dog, bunny, or bird.");
+		reset();
+	}
+	//otherwise if valid input is given
+	else {
+		//default values
 		chosenImg = "";
 		index = 1;
 		//if puzzle table has been created before, delete it for the new requested puzzle table
@@ -90,13 +97,6 @@ function playGame(){
 				table.deleteRow(0);
 			}
 		}
-	//if user did not enter a valid input, reprompt them to enter a valid input and stop
-	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
-		alert("Please enter cat, dog, bunny, or bird.");
-		reset();
-	}
-	//otherwise if valid input is given
-	else {
 		//if cat
 		if (userReply == "cat"){
 			//set chosen image value to cat
