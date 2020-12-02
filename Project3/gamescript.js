@@ -152,6 +152,8 @@ function playGame(){
 			xCoord = 0;
 		}
 	}
+	//call function to find new neighboring tiles
+	aroundEmptyTile();
 }
 
 //default values for second cell - for comparison
@@ -237,6 +239,18 @@ function move(x,y){
 		checkAbove(x,y);
 		checkBelow(x,y);
 	}
+	//run through all the rows of the puzzle table
+	for (var x=0;x<4;x++){
+		//run through the cells in rows
+		for (var y=0;y<4;y++){
+			//clear old tiles with the class
+			table.rows[x].cells[y].classList.remove("moveablepiece");
+		}
+	}
+	//call function to find new neighboring tiles
+	aroundEmptyTile();
+	//check if tiles are all in place
+	checkWin();
 }
 /////////////////////////////////////////////////////////////////////
 //									Animation function
@@ -599,6 +613,189 @@ function hoverLeft(x,y){
 	}
 }
 
+/* Below is the code used to shuffle the tiles of the puzzle game. */
+
+//default values
+var count = 0;
+var neighborsX = new Array();
+var neighborsY = new Array();
+var tileIndex = 0;
+
+//shuffle function
+function shuffleMe(){
+	//while count is less than 1000 (will swap tiles 1000 times)
+	while (count < 1000){
+		//run through all rows of the puzzle
+		for (var x=0;x<4;x++){
+			//run through the cells in rows
+			for (var y=0;y<4;y++){
+				//if empty tile is found
+				if (table.rows[x].cells[y].innerHTML == ""){
+						//call findNeighbors function to find potential swaps
+						findNeighbors(x,y);
+					}
+				}
+		}
+		//add 1 to counter each time a tile swap is made
+		count++;
+	}
+	//reset count to zero
+	count = 0;
+	//run through all the rows of the puzzle table
+	for (var x=0;x<4;x++){
+		//run through the cells in rows
+		for (var y=0;y<4;y++){
+			//clear old tiles with the class
+			table.rows[x].cells[y].classList.remove("moveablepiece");
+		}
+	}
+	//call function to find new neighboring tiles
+	aroundEmptyTile();
+	//reset timer
+	resetTimer();
+}
+
+//find neighboring tiles to swap with
+function findNeighbors(x,y){
+	//if end row
+	if (x == table.rows.length-1){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeftOfEmpty(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			checkRightOfEmpty(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeftOfEmpty(x,y);
+			checkRightOfEmpty(x,y);
+		}
+		//check above in all cases
+		checkAboveOfEmpty(x,y);
+	}
+	//if top row
+	else if (x == 0){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeftOfEmpty(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			checkRightOfEmpty(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeftOfEmpty(x,y);
+			checkRightOfEmpty(x,y);
+		}
+		//check below in all cases
+		checkBelowOfEmpty(x,y);
+	}
+	//otherwise in middle rows
+	else {
+		//if right end
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeftOfEmpty(x,y);
+		}
+		//if left end
+		else if (y == 0){
+			//check right
+			checkRightOfEmpty(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeftOfEmpty(x,y);
+			checkRightOfEmpty(x,y);
+		}
+		//check above and below in all cases
+		checkAboveOfEmpty(x,y);
+		checkBelowOfEmpty(x,y);
+	}
+	//find a random neighboring tile to swap the empty tile with
+	tileIndex = Math.floor(Math.random()*neighborsX.length);
+	//call function to actually swap the tiles
+	swapTiles(x,y,tileIndex);
+	
+}
+
+//check if there is a neighboring tile below the empty tile
+function checkBelowOfEmpty(x,y){
+	//if it isn't an empty space
+	if (table.rows[x+1].cells[y].innerHTML != ""){
+		//add the tile to the neighbors array
+		neighborsX.push(x+1);
+		neighborsY.push(y);
+	}
+}
+
+//check if there is a neighboring tile above the empty tile
+function checkAboveOfEmpty(x,y){
+	//if it isn't an empty space
+	if (table.rows[x-1].cells[y].innerHTML != ""){
+		//add the tile to the neighbors array
+		neighborsX.push(x-1);
+		neighborsY.push(y);
+	}
+}
+
+//check if there is a neighboring tile to the right of the empty tile
+function checkRightOfEmpty(x,y){
+	//if it isn't an empty space
+	if (table.rows[x].cells[y+1].innerHTML != ""){
+		//add the tile to the neighbors array
+		neighborsX.push(x);
+		neighborsY.push(y+1);
+	}
+}
+
+//check if there is a neighboring tile to the left of the empty tile
+function checkLeftOfEmpty(x,y){
+	//if it isn't an empty space
+	if (table.rows[x].cells[y-1].innerHTML != ""){
+		//add the tile to the neighbors array
+		neighborsX.push(x);
+		neighborsY.push(y-1);
+	}
+}
+
+//swap empty and a random tile neighbor
+function swapTiles(x,y,tileIndex){
+	//call randomly selected neighboring tile
+	otherX = neighborsX[tileIndex];
+	otherY = neighborsY[tileIndex];
+	
+	//set other values to above tile
+	otherIndex = table.rows[otherX].cells[otherY].innerHTML;
+	otherImage = table.rows[otherX].cells[otherY].style.cssText;
+	
+	//set current values to current tile
+	currentIndex = table.rows[x].cells[y].innerHTML;
+	currentCSS = table.rows[x].cells[y].style.cssText;
+	
+	//switch current tile values to the above tile's values	
+	table.rows[x].cells[y].innerHTML = otherIndex;
+	table.rows[x].cells[y].style.cssText = otherImage;
+	
+	//switch the above tile values to the current tile's initial values
+	table.rows[otherX].cells[otherY].innerHTML = currentIndex;
+	table.rows[otherX].cells[otherY].style.cssText = currentCSS;
+	
+	//empty arrays for next swap
+	neighborsX = [];
+	neighborsY = [];
+}
+
+
 /*Below is the code used for when the game is won.*/
 
 //default values for checking
@@ -620,27 +817,39 @@ function checkWin(){
 			checkHTML = "<div>" + checkIndex + "</div>";
 			//if at last tile, check if the html value is empty (for the empty tile)
 			if (x == 3 && y == 3){
+				//if empty tile
 				if (table.rows[x].cells[y].innerHTML == ""){
+					//set to true
 					gameWin = true;
+					//add to index
 					checkIndex++;
 				}
+				//otherwise, game is not won
 				else {
 					gameWin = false;
 				}
 			}
+			//at any other tile
 			else {
+				//if the number matches the correct cell
 				if (table.rows[x].cells[y].innerHTML == checkHTML){
+					//set to true
 					gameWin = true;
+					//add to index
 					checkIndex++;
 				}
+				//otherwise, game is not won
 				else {
 					gameWin = false;
 				}
 			}
 		}
 	}
+	//if won
 	if (gameWin == true){
+		//tell the user
 		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed!";
+		//reset value
 		gameWin = false;
 	}
 }
