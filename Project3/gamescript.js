@@ -84,12 +84,6 @@ function playGame(){
 	//default values
 	chosenImg = "";
 	index = 1;
-	//if puzzle table has been created before, delete it for the new requested puzzle table
-	if (table.rows.length != 0){
-		while (table.rows.length > 0){
-			table.deleteRow(0);
-		}
-	}
 	//if user did not enter a valid input, reprompt them to enter a valid input and stop
 	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
 		alert("Please enter cat, dog, bunny, or bird.");
@@ -97,6 +91,12 @@ function playGame(){
 	}
 	//otherwise if valid input is given
 	else {
+		//if puzzle table has been created before, delete it for the new requested puzzle table
+		if (table.rows.length != 0){
+			while (table.rows.length > 0){
+				table.deleteRow(0);
+			}
+		}
 		//if cat
 		if (userReply == "cat"){
 			//set chosen image value to cat
