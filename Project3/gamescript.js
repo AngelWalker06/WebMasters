@@ -81,9 +81,6 @@ function playGame(){
 		//get actual user input from the text box
 		userReply = document.getElementById("picNum").value;
 	}
-	//default values
-	chosenImg = "";
-	index = 1;
 	//if user did not enter a valid input, reprompt them to enter a valid input and stop
 	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
 		alert("Please enter cat, dog, bunny, or bird.");
@@ -91,6 +88,9 @@ function playGame(){
 	}
 	//otherwise if valid input is given
 	else {
+		//default values
+		chosenImg = "";
+		index = 1;
 		//if puzzle table has been created before, delete it for the new requested puzzle table
 		if (table.rows.length != 0){
 			while (table.rows.length > 0){
