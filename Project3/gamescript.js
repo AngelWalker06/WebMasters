@@ -172,6 +172,19 @@ var currentCSS = 0;
 //}
 //}
 
+//clear hover class from old tiles
+function resetNeighbor(x,y){
+	//run through all rows in puzzle
+	for (var x=0;x<4;x++){
+		//run through the cells in rows
+		for (var y=0;y<4;y++){
+			//if it has the hover class
+			if (table.rows[x].cells[y].classList.contains("moveablepiece")){
+				//remove the class
+				table.rows[x].cells[y].classList.remove("moveablepiece");
+			}
+		}
+	
 
 //move tile function
 function move(x,y){
@@ -239,18 +252,6 @@ function move(x,y){
 		checkAbove(x,y);
 		checkBelow(x,y);
 	}
-	//run through all the rows of the puzzle table
-	for (var x=0;x<4;x++){
-		//run through the cells in rows
-		for (var y=0;y<4;y++){
-			//clear old tiles with the class
-			table.rows[x].cells[y].classList.remove("moveablepiece");
-		}
-	}
-	//call function to find new neighboring tiles
-	aroundEmptyTile();
-	//check if tiles are all in place
-	checkWin();
 }
 /////////////////////////////////////////////////////////////////////
 //									Animation function
@@ -283,6 +284,12 @@ function downardSwitch(x,y){
 			table.rows[x].cells[y].style.cssText = otherImage;
 			table.rows[x+1].cells[y].innerHTML = currentIndex;
 		 table.rows[x+1].cells[y].style.cssText = currentCSS;
+	    //reset neighbor tiles
+	    resetNeighbor(x,y);
+	    //find new neighbor tiles
+		 aroundEmptyTile();
+	    //check if puzzle is completed
+		 checkWin();
 	     } else {
 			top++;
       current.style.top= top+"px";
@@ -319,6 +326,12 @@ function upwwardSwitch(x,y){
 			// switch the above tile values to the current tile's initial values
 			table.rows[x-1].cells[y].innerHTML = currentIndex;
 			table.rows[x-1].cells[y].style.cssText = currentCSS;
+	    //reset neighbor tiles
+	    resetNeighbor(x,y);
+	    //find new neighbor tiles
+		 aroundEmptyTile();
+	    //check if puzzle is completed
+		 checkWin();
     } else {
 			bottom++;
       current.style.bottom= bottom+"px";
@@ -355,6 +368,12 @@ function rightwardSwitch(x,y){
 			// //switch the above tile values to the current tile's initial values
 			table.rows[x].cells[y+1].innerHTML = currentIndex;
 			table.rows[x].cells[y+1].style.cssText = currentCSS;
+	    //reset neighbor tiles
+	    resetNeighbor(x,y);
+	    //find new neighbor tiles
+		 aroundEmptyTile();
+	    //check if puzzle is completed
+		 checkWin();
     } else {
 			left++;
       current.style.left= left+"px";
@@ -392,6 +411,12 @@ function leftwardSwitch(x,y){
 			// //switch the above tile values to the current tile's initial values
 			table.rows[x].cells[y-1].innerHTML = currentIndex;
 			table.rows[x].cells[y-1].style.cssText = currentCSS;
+	    //reset neighbor tiles
+	    resetNeighbor(x,y);
+	    //find new neighbor tiles
+		 aroundEmptyTile();
+	    //check if puzzle is completed
+		 checkWin();
     } else {
 			right++;
       current.style.right= right+"px";
@@ -827,6 +852,7 @@ function checkWin(){
 				//otherwise, game is not won
 				else {
 					gameWin = false;
+					checkIndex = 0;
 				}
 			}
 			//at any other tile
@@ -841,16 +867,18 @@ function checkWin(){
 				//otherwise, game is not won
 				else {
 					gameWin = false;
+					checkIndex = 0;
 				}
 			}
 		}
 	}
 	//if won
-	if (gameWin == true){
+	if (gameWin == true && checkIndex == 17){
 		//tell the user
 		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed!";
 		//reset value
 		gameWin = false;
+		checkIndex = 1;
 	}
 }
 
