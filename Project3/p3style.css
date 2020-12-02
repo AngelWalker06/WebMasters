@@ -54,6 +54,13 @@ img {
   cursor: pointer;
 }
 
+/*validators*/
+.validators {
+	position: fixed;
+	right: 10px;
+	bottom: 0px;
+}
+
 h1 {
   font-size: 48px;
   font-family: "Montserrat", sans-serif;
