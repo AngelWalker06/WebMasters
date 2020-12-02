@@ -41,6 +41,7 @@ function load(){
 
 //run to create puzzle table
 function playGame(){
+	document.getElementById("gameWin").innerHTML = "";
 	//default user input
 
 		userReply = "cat";
@@ -650,6 +651,7 @@ var tileIndex = 0;
 
 //shuffle function
 function shuffleMe(){
+	document.getElementById("gameWin").innerHTML = "";
 	//while count is less than 1000 (will swap tiles 1000 times)
 	while (count < 1000){
 		//run through all rows of the puzzle
@@ -877,7 +879,7 @@ function checkWin(){
 	//if won
 	if (gameWin == true && checkIndex == 17){
 		//tell the user
-		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed!";
+		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed! <br /><img src = 'win.png' alt = 'win' style='height:180px;width:320px' />";
 		//reset value
 		gameWin = false;
 		checkIndex = 1;
