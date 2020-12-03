@@ -6,44 +6,44 @@
 */
 /*design choices*/
 body {
-	background-color: #4287f5;
-	text-align: center;
-	font-family: "arial";
+  background-color: #4287f5;
+  text-align: center;
+  font-family: "arial";
 }
 
 /*center alignment*/
 .center {
-	margin-right: auto;
-	margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /*header and footer*/
 .pages {
-	border-radius: 10px;
-	background-color:#78deae;
-	padding: 1px;
+  border-radius: 10px;
+  background-color: #78deae;
+  padding: 1px;
 }
-.square{
-	height: 96px;
-	width: 96px;
-	border-width: 2px;
-	border-color: black;
-	border-style: solid;
-	text-align: center;
-	font-size: 32px;
-	position: relative;
-	color: gray;
+.square {
+  height: 96px;
+  width: 96px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  text-align: center;
+  font-size: 32px;
+  position: relative;
+  color: gray;
 }
 
 /*table format*/
 table {
-	border-spacing: 0px;
+  border-spacing: 0px;
 }
 
 /*bg image format*/
 img {
-	width: 50px;
-	height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 /*border color*/
@@ -56,9 +56,9 @@ img {
 
 /*validators*/
 .validators {
-	position: fixed;
-	right: 10px;
-	bottom: 0px;
+  position: fixed;
+  right: 10px;
+  bottom: 0px;
 }
 
 h1 {
@@ -79,11 +79,11 @@ h1 {
   grid-row-gap: 23px;
   width: 50%;
   padding-top: 10px;
-	padding-left: 50px;
-	padding-right: 0px;
-	position: fixed;
-	top: 0;
-	right:0;
+  padding-left: 50px;
+  padding-right: 0px;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 .circle {
@@ -114,23 +114,20 @@ h1 {
 .controls {
   display: block;
   justify-content: space-between;
-height: 20px;
+  height: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-
-
-
 }
 
 button {
   cursor: pointer;
   background: transparent;
   padding: 0;
-  border: 1px;;
+  border: 1px;
   margin: 0;
   outline: none;
-	border: 2px solid;
+  border: 2px solid;
 }
 
 #playButton {
@@ -143,5 +140,4 @@ button {
 img {
   border: 1px solid #ddd;
   border-radius: 1px;
-
 }
