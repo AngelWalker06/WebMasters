@@ -1053,7 +1053,6 @@ function dropConfetti() {
 }
 
 function scoreSubmit() {
-  console.log("dd");
   var name = document.getElementById("name").value;
   var setTime = document.getElementById("time").value;
   var setMove = moveCounter;
@@ -1082,9 +1081,10 @@ function scoreSubmit() {
     "Congrats!" +
       name +
       "'s clear time is" +
-      "and the clear move is" +
+      document.getElementById("time").value +
+      " and the clear move is" +
       moveCounter +
-      "the best time is " +
+      ". The best time is " +
       showBestTime +
       " and best move is " +
       showBestMove +
