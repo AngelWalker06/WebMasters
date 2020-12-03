@@ -41,7 +41,6 @@ function load(){
 
 //run to create puzzle table
 function playGame(){
-	document.getElementById("gameWin").innerHTML = "";
 	//default user input
 
 		userReply = "cat";
@@ -81,6 +80,15 @@ function playGame(){
 		//get actual user input from the text box
 		userReply = document.getElementById("picNum").value;
 	}
+	//default values
+	chosenImg = "";
+	index = 1;
+	//if puzzle table has been created before, delete it for the new requested puzzle table
+	if (table.rows.length != 0){
+		while (table.rows.length > 0){
+			table.deleteRow(0);
+		}
+	}
 	//if user did not enter a valid input, reprompt them to enter a valid input and stop
 	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
 		alert("Please enter cat, dog, bunny, or bird.");
@@ -88,15 +96,6 @@ function playGame(){
 	}
 	//otherwise if valid input is given
 	else {
-		//default values
-		chosenImg = "";
-		index = 1;
-		//if puzzle table has been created before, delete it for the new requested puzzle table
-		if (table.rows.length != 0){
-			while (table.rows.length > 0){
-				table.deleteRow(0);
-			}
-		}
 		//if cat
 		if (userReply == "cat"){
 			//set chosen image value to cat
@@ -187,7 +186,7 @@ function resetNeighbor(x,y){
 		}
 	}
 }
-	
+
 
 //move tile function
 function move(x,y){
@@ -651,7 +650,6 @@ var tileIndex = 0;
 
 //shuffle function
 function shuffleMe(){
-	document.getElementById("gameWin").innerHTML = "";
 	//while count is less than 1000 (will swap tiles 1000 times)
 	while (count < 1000){
 		//run through all rows of the puzzle
@@ -754,7 +752,7 @@ function findNeighbors(x,y){
 	tileIndex = Math.floor(Math.random()*neighborsX.length);
 	//call function to actually swap the tiles
 	swapTiles(x,y,tileIndex);
-	
+
 }
 
 //check if there is a neighboring tile below the empty tile
@@ -802,23 +800,23 @@ function swapTiles(x,y,tileIndex){
 	//call randomly selected neighboring tile
 	otherX = neighborsX[tileIndex];
 	otherY = neighborsY[tileIndex];
-	
+
 	//set other values to above tile
 	otherIndex = table.rows[otherX].cells[otherY].innerHTML;
 	otherImage = table.rows[otherX].cells[otherY].style.cssText;
-	
+
 	//set current values to current tile
 	currentIndex = table.rows[x].cells[y].innerHTML;
 	currentCSS = table.rows[x].cells[y].style.cssText;
-	
-	//switch current tile values to the above tile's values	
+
+	//switch current tile values to the above tile's values
 	table.rows[x].cells[y].innerHTML = otherIndex;
 	table.rows[x].cells[y].style.cssText = otherImage;
-	
+
 	//switch the above tile values to the current tile's initial values
 	table.rows[otherX].cells[otherY].innerHTML = currentIndex;
 	table.rows[otherX].cells[otherY].style.cssText = currentCSS;
-	
+
 	//empty arrays for next swap
 	neighborsX = [];
 	neighborsY = [];
@@ -879,7 +877,8 @@ function checkWin(){
 	//if won
 	if (gameWin == true && checkIndex == 17){
 		//tell the user
-		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed! <br /><img src = 'win.png' alt = 'win' style='height:180px;width:320px' />";
+		dropConfetti();
+		document.getElementById("gameWin").innerHTML = "Game Win! The puzzle is completed!";
 		//reset value
 		gameWin = false;
 		checkIndex = 1;
@@ -968,4 +967,73 @@ function playAudio() {
 
 function pauseAudio() {
   x.pause();
+}
+function dropConfetti(){
+	const canvasEl = document.querySelector('#canvas');
+
+	const w = canvasEl.width = window.innerWidth;
+	const h = canvasEl.height = window.innerHeight * 2;
+
+	function loop() {
+	requestAnimationFrame(loop);
+	ctx.clearRect(0,0,w,h);
+
+	confs.forEach((conf) => {
+		conf.update();
+		conf.draw();
+	})
+	}
+
+	function Confetti () {
+	//construct confetti
+	const colours = ['#fde132', '#009bde', '#ff6b00'];
+
+	this.x = Math.round(Math.random() * w);
+	this.y = Math.round(Math.random() * h)-(h/2);
+	this.rotation = Math.random()*360;
+
+	const size = Math.random()*(w/60);
+	this.size = size < 15 ? 15 : size;
+
+	this.color = colours[Math.floor(colours.length * Math.random())];
+
+	this.speed = this.size/7;
+
+	this.opacity = Math.random();
+
+	this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
+	}
+
+	Confetti.prototype.border = function() {
+	if (this.y >= h) {
+		this.y = h;
+	}
+	}
+
+	Confetti.prototype.update = function() {
+	this.y += this.speed;
+
+	if (this.y <= h) {
+		this.x += this.shiftDirection/3;
+		this.rotation += this.shiftDirection*this.speed/100;
+	}
+
+	if (this.y > h) this.border();
+	};
+
+	Confetti.prototype.draw = function() {
+	ctx.beginPath();
+	ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
+	ctx.lineTo(this.x, this.y);
+	ctx.closePath();
+	ctx.globalAlpha = this.opacity;
+	ctx.fillStyle = this.color;
+	ctx.fill();
+	};
+
+	const ctx = canvasEl.getContext('2d');
+	const confNum = Math.floor(w / 4);
+	const confs = new Array(confNum).fill().map(_ => new Confetti());
+
+	loop();
 }
