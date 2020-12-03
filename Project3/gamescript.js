@@ -32,140 +32,129 @@ imgList[1] = "url('dog.jpg')";
 imgList[2] = "url('bunny.jpg')";
 imgList[3] = "url('bird.jpg')";
 
+
 //runs load function when site is first loaded
-function load() {
-  //confirms default value
-  firstLoading = 0;
-  //runs playGame function to create a puzzle
-  playGame();
+function load(){
+	//confirms default value
+	firstLoading = 0;
+	//runs playGame function to create a puzzle
+	playGame();
 }
 
-//run to create puzzle table
-function playGame() {
-  //default user input
 
-  userReply = "cat";
-  //if site is loading for the first time, choose a random image for the puzzle table
-  if (firstLoading == 0) {
-    //get a number from 0 to 3
-    var randomImg = Math.floor(Math.random() * 4);
-    //if number is 0
-    if (randomImg == 0) {
-      //place input as cat
-      userReply = "cat";
-    }
-    //if number is 1
-    else if (randomImg == 1) {
-      //place input as dog
-      userReply = "dog";
-    }
-    //if number is 2
-    else if (randomImg == 2) {
-      //place input as bunny
-      userReply = "bunny";
-    }
-    //if number is 3
-    else if (randomImg == 3) {
-      //place input as bird
-      userReply = "bird";
-    }
-    //as a precaution, a default value of cat is given
-    else {
-      userReply = "cat";
-    }
-    //page has loaded, so increment by 1 so it does not enter this part of the code again
-    firstLoading++;
-  }
-  //otherwise
-  else {
-    //get actual user input from the text box
-    userReply = document.getElementById("picNum").value;
-  }
-  //default values
-  chosenImg = "";
-  index = 1;
-  //if puzzle table has been created before, delete it for the new requested puzzle table
-  if (table.rows.length != 0) {
-    while (table.rows.length > 0) {
-      table.deleteRow(0);
-    }
-  }
-  //if user did not enter a valid input, reprompt them to enter a valid input and stop
-  if (
-    userReply != "cat" &&
-    userReply != "dog" &&
-    userReply != "bunny" &&
-    userReply != "bird"
-  ) {
-    alert("Please enter cat, dog, bunny, or bird.");
-    reset();
-  }
-  //otherwise if valid input is given
-  else {
-    //if cat
-    if (userReply == "cat") {
-      //set chosen image value to cat
-      chosenImg = imgList[0];
-    }
-    //if dog
-    else if (userReply == "dog") {
-      //set chosen image value to dog
-      chosenImg = imgList[1];
-    }
-    //if bunny
-    else if (userReply == "bunny") {
-      //set chosen image value to bunny
-      chosenImg = imgList[2];
-    }
-    //if bird
-    else if (userReply == "bird") {
-      //set chosen image value to bird
-      chosenImg = imgList[3];
-    } else {
-      chosenImg = imgList[0];
-    }
-    //for loop that runs for four rows
-    for (var x = 0; x < 4; x++) {
-      //make a row each loop
-      var row = table.insertRow(table.length);
-      //for loop that runs for four cells per row with a part of the image
-      for (var y = 0; y < 4; y++) {
-        //make a cell each time
-        var col = row.insertCell(y);
-        //set the cell's HTML to number of tile
-        col.innerHTML = "<div>" + index + "</div>";
-        //set the cell's background to part of the image
-        col.style.cssText =
-          "background-image: " +
-          chosenImg +
-          "; background-position: " +
-          xCoord +
-          "px " +
-          yCoord +
-          "px";
-        //shift x coordinate by 100px
-        xCoord -= 100;
-        //add square class to cell
-        col.classList.add("square");
-        //add click listener to cell for move function
-        table.rows[x].cells[y].addEventListener("click", function () {
-          move(this.parentNode.rowIndex, this.cellIndex);
-        });
-        //increase tile number for next cell
-        index++;
-        //if last cell, empty contents
-        if (index == 17) {
-          col.style.backgroundImage = "";
-          col.innerHTML = "";
-          continue;
-        }
-      }
-      //shift y coordinate by 100px
-      yCoord -= 100;
-      //reset x coordinate for next loop
-      xCoord = 0;
-    }
-  }
+//run to create puzzle table
+function playGame(){
+	//default user input
+
+		userReply = "cat";
+	//if site is loading for the first time, choose a random image for the puzzle table
+	if (firstLoading == 0){
+		//get a number from 0 to 3
+		var randomImg = Math.floor(Math.random()*4);
+		//if number is 0
+		if (randomImg == 0){
+			//place input as cat
+			userReply = "cat";
+		}
+		//if number is 1
+		else if (randomImg == 1){
+			//place input as dog
+			userReply = "dog";
+		}
+		//if number is 2
+		else if (randomImg == 2){
+			//place input as bunny
+			userReply = "bunny";
+		}
+		//if number is 3
+		else if (randomImg == 3){
+			//place input as bird
+			userReply = "bird";
+		}
+		//as a precaution, a default value of cat is given
+		else {
+			userReply = "cat";
+		}
+		//page has loaded, so increment by 1 so it does not enter this part of the code again
+		firstLoading++;
+	}
+	//otherwise
+	else {
+		//get actual user input from the text box
+		userReply = document.getElementById("picNum").value;
+	}
+	//default values
+	chosenImg = "";
+	index = 1;
+	//if puzzle table has been created before, delete it for the new requested puzzle table
+	if (table.rows.length != 0){
+		while (table.rows.length > 0){
+			table.deleteRow(0);
+		}
+	}
+	//if user did not enter a valid input, reprompt them to enter a valid input and stop
+	if (userReply != "cat" && userReply != "dog" && userReply != "bunny" && userReply != "bird"){
+		alert("Please enter cat, dog, bunny, or bird.");
+		reset();
+	}
+	//otherwise if valid input is given
+	else {
+		//if cat
+		if (userReply == "cat"){
+			//set chosen image value to cat
+			chosenImg = imgList[0];
+		}
+		//if dog
+		else if (userReply == "dog"){
+			//set chosen image value to dog
+			chosenImg = imgList[1];
+		}
+		//if bunny
+		else if (userReply == "bunny"){
+			//set chosen image value to bunny
+			chosenImg = imgList[2];
+		}
+		//if bird
+		else if (userReply == "bird"){
+			//set chosen image value to bird
+			chosenImg = imgList[3];
+		}
+		else{
+			chosenImg = imgList[0];
+		}
+		//for loop that runs for four rows
+		for (var x=0;x<4;x++){
+			//make a row each loop
+			var row = table.insertRow(table.length);
+			//for loop that runs for four cells per row with a part of the image
+			for (var y=0;y<4;y++){
+				//make a cell each time
+				var col = row.insertCell(y);
+				//set the cell's HTML to number of tile
+				col.innerHTML = "<div>" + index + "</div>";
+				//set the cell's background to part of the image
+				col.style.cssText = "background-image: " + chosenImg + "; background-position: " + xCoord + "px " + yCoord + "px";
+				//shift x coordinate by 100px
+				xCoord -= 100;
+				//add square class to cell
+				col.classList.add("square");
+				//add click listener to cell for move function
+				table.rows[x].cells[y].addEventListener("click", function(){move(this.parentNode.rowIndex,this.cellIndex)});
+				//increase tile number for next cell
+				index++;
+				//if last cell, empty contents
+				if (index == 17){
+					col.style.backgroundImage = "";
+					col.innerHTML = "";
+					continue;
+				}
+			}
+			//shift y coordinate by 100px
+			yCoord -= 100;
+			//reset x coordinate for next loop
+			xCoord = 0;
+		}
+	}
 }
 
 //default values for second cell - for comparison
@@ -184,6 +173,7 @@ var currentCSS = 0;
 //}
 //}
 
+<<<<<<< HEAD
 //move tile function
 function move(x, y) {
   //if end row
@@ -394,378 +384,198 @@ function leftwardSwitch(x, y) {
     }
   }
 }
+=======
 
-///////////////////////////////////////////////////////////////////
+//move tile function
+function move(x,y){
+	//if end row
+	if (x == table.rows.length-1){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeft(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			checkRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeft(x,y);
+			checkRight(x,y);
+		}
+		//check above in all cases
+		checkAbove(x,y);
+	}
+	//if top row
+	else if (x == 0){
+		//if right corner
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeft(x,y);
+		}
+		//if left corner
+		else if (y == 0){
+			//check right
+			checkRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeft(x,y);
+			checkRight(x,y);
+		}
+		//check below in all cases
+		checkBelow(x,y);
+	}
+	//otherwise in middle rows
+	else {
+		//if right end
+		if (y == table.rows[0].cells.length-1){
+			//check left
+			checkLeft(x,y);
+		}
+		//if left end
+		else if (y == 0){
+			//check right
+			checkRight(x,y);
+		}
+		//otherwise
+		else {
+			//check both left and right
+			checkLeft(x,y);
+			checkRight(x,y);
+		}
+		//check above and below in all cases
+		checkAbove(x,y);
+		checkBelow(x,y);
+	}
+}
 
 //switch tiles if the tile below the current tile is empty
-function checkBelow(x, y) {
-  //if the tile below is empty
-  if (table.rows[x + 1].cells[y].innerHTML == "") {
-    downardSwitch(x, y);
-    //set other values to above tile
-    otherIndex = table.rows[x + 1].cells[y].innerHTML;
-    otherImage = table.rows[x + 1].cells[y].style.cssText;
+function checkBelow(x,y){
+	//if the tile below is empty
+	if (table.rows[x+1].cells[y].innerHTML == ""){
+		//set other values to above tile
+		otherIndex = table.rows[x+1].cells[y].innerHTML;
+		otherImage = table.rows[x+1].cells[y].style.cssText;
 
-    //set current values to current tile
-    currentIndex = table.rows[x].cells[y].innerHTML;
-    currentCSS = table.rows[x].cells[y].style.cssText;
+		//set current values to current tile
+		currentIndex = table.rows[x].cells[y].innerHTML;
+		currentCSS = table.rows[x].cells[y].style.cssText;
+>>>>>>> parent of 76b8989... Merge branch 'master' of https://github.com/AngelWalker06/WebMasters
 
-    //switch current tile values to the above tile's values
-    // table.rows[x].cells[y].innerHTML = otherIndex;
-    // table.rows[x].cells[y].style.cssText = otherImage;
-    //
-    // //switch the above tile values to the current tile's initial values
-    // table.rows[x+1].cells[y].innerHTML = currentIndex;
-    // table.rows[x+1].cells[y].style.cssText = currentCSS;
-  }
+		//switch current tile values to the above tile's values
+		table.rows[x].cells[y].innerHTML = otherIndex;
+		table.rows[x].cells[y].style.cssText = otherImage;
+
+		//switch the above tile values to the current tile's initial values
+		table.rows[x+1].cells[y].innerHTML = currentIndex;
+		table.rows[x+1].cells[y].style.cssText = currentCSS;
+	}
 }
 
 //switch tiles if the tile above the current tile is empty
-function checkAbove(x, y) {
-  //if the tile above is empty
-  if (table.rows[x - 1].cells[y].innerHTML == "") {
-    upwwardSwitch(x, y);
-    //set other values to above tile
-    otherIndex = table.rows[x - 1].cells[y].innerHTML;
-    otherImage = table.rows[x - 1].cells[y].style.cssText;
+function checkAbove(x,y){
+	//if the tile above is empty
+	if (table.rows[x-1].cells[y].innerHTML == ""){
+		//set other values to above tile
+		otherIndex = table.rows[x-1].cells[y].innerHTML;
+		otherImage = table.rows[x-1].cells[y].style.cssText;
 
-    //set current values to current tile
-    currentIndex = table.rows[x].cells[y].innerHTML;
-    currentCSS = table.rows[x].cells[y].style.cssText;
+		//set current values to current tile
+		currentIndex = table.rows[x].cells[y].innerHTML;
+		currentCSS = table.rows[x].cells[y].style.cssText;
 
-    //switch current tile values to the above tile's values
-    // table.rows[x].cells[y].innerHTML = otherIndex;
-    // table.rows[x].cells[y].style.cssText = otherImage;
+		//switch current tile values to the above tile's values
+		table.rows[x].cells[y].innerHTML = otherIndex;
+		table.rows[x].cells[y].style.cssText = otherImage;
 
-    //switch the above tile values to the current tile's initial values
-    // table.rows[x-1].cells[y].innerHTML = currentIndex;
-    // table.rows[x-1].cells[y].style.cssText = currentCSS;
-  }
+		//switch the above tile values to the current tile's initial values
+		table.rows[x-1].cells[y].innerHTML = currentIndex;
+		table.rows[x-1].cells[y].style.cssText = currentCSS;
+	}
 }
 
 //switch tiles if the tile to the right of the current tile is empty
-function checkRight(x, y) {
-  //if the tile to the right is empty
-  if (table.rows[x].cells[y + 1].innerHTML == "") {
-    rightwardSwitch(x, y);
-    //set other values to above tile
-    otherIndex = table.rows[x].cells[y + 1].innerHTML;
-    otherImage = table.rows[x].cells[y + 1].style.cssText;
+function checkRight(x,y){
+	//if the tile to the right is empty
+	if (table.rows[x].cells[y+1].innerHTML == ""){
+		//set other values to above tile
+		otherIndex = table.rows[x].cells[y+1].innerHTML;
+		otherImage = table.rows[x].cells[y+1].style.cssText;
 
-    //set current values to current tile
-    currentIndex = table.rows[x].cells[y].innerHTML;
-    currentCSS = table.rows[x].cells[y].style.cssText;
+		//set current values to current tile
+		currentIndex = table.rows[x].cells[y].innerHTML;
+		currentCSS = table.rows[x].cells[y].style.cssText;
 
-    //switch current tile values to the above tile's values
-    // table.rows[x].cells[y].innerHTML = otherIndex;
-    // table.rows[x].cells[y].style.cssText = otherImage;
-    //
-    // //switch the above tile values to the current tile's initial values
-    // table.rows[x].cells[y+1].innerHTML = currentIndex;
-    // table.rows[x].cells[y+1].style.cssText = currentCSS;
-  }
+		//switch current tile values to the above tile's values
+		table.rows[x].cells[y].innerHTML = otherIndex;
+		table.rows[x].cells[y].style.cssText = otherImage;
+
+		//switch the above tile values to the current tile's initial values
+		table.rows[x].cells[y+1].innerHTML = currentIndex;
+		table.rows[x].cells[y+1].style.cssText = currentCSS;
+	}
 }
 
 //switch tiles if the tile to the left of the current tile is empty
-function checkLeft(x, y) {
-  //if the tile to the left is empty
-  if (table.rows[x].cells[y - 1].innerHTML == "") {
-    leftwardSwitch(x, y);
-    //set other values to above tile
-    otherIndex = table.rows[x].cells[y - 1].innerHTML;
-    otherImage = table.rows[x].cells[y - 1].style.cssText;
+function checkLeft(x,y){
+	//if the tile to the left is empty
+	if (table.rows[x].cells[y-1].innerHTML == ""){
+		//set other values to above tile
+		otherIndex = table.rows[x].cells[y-1].innerHTML;
+		otherImage = table.rows[x].cells[y-1].style.cssText;
 
-    //set current values to current tile
-    currentIndex = table.rows[x].cells[y].innerHTML;
-    currentCSS = table.rows[x].cells[y].style.cssText;
+		//set current values to current tile
+		currentIndex = table.rows[x].cells[y].innerHTML;
+		currentCSS = table.rows[x].cells[y].style.cssText;
 
-    //switch current tile values to the above tile's values
-    // table.rows[x].cells[y].innerHTML = otherIndex;
-    // table.rows[x].cells[y].style.cssText = otherImage;
-    //
-    // //switch the above tile values to the current tile's initial values
-    // table.rows[x].cells[y-1].innerHTML = currentIndex;
-    // table.rows[x].cells[y-1].style.cssText = currentCSS;
-  } else {
-    //alert("left doesn't work!");
-  }
+		//switch current tile values to the above tile's values
+		table.rows[x].cells[y].innerHTML = otherIndex;
+		table.rows[x].cells[y].style.cssText = otherImage;
+
+		//switch the above tile values to the current tile's initial values
+		table.rows[x].cells[y-1].innerHTML = currentIndex;
+		table.rows[x].cells[y-1].style.cssText = currentCSS;
+	}
+	else {
+		//alert("left doesn't work!");
+	}
 }
-
-/* Below is the code used to highlight neighboring tiles of the empty tile when a mouse is hovered over it. */
-
-//function to find empty tile and its neighbors
-function aroundEmptyTile() {
-  for (var x = 0; x < 4; x++) {
-    //run through the cells in rows
-    for (var y = 0; y < 4; y++) {
-      //if empty tile is found
-      if (table.rows[x].cells[y].innerHTML == "") {
-        colorTiles(x, y);
-      }
-    }
-  }
-}
-
-//function to color neighboring tiles on hover
-function colorTiles(x, y) {
-  //if end row
-  if (x == table.rows.length - 1) {
-    //if right corner
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      hoverLeft(x, y);
-    }
-    //if left corner
-    else if (y == 0) {
-      //check right
-      hoverRight(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      hoverLeft(x, y);
-      hoverRight(x, y);
-    }
-    //check above in all cases
-    hoverAbove(x, y);
-  }
-  //if top row
-  else if (x == 0) {
-    //if right corner
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      hoverLeft(x, y);
-    }
-    //if left corner
-    else if (y == 0) {
-      //check right
-      hoverRight(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      hoverLeft(x, y);
-      hoverRight(x, y);
-    }
-    //check below in all cases
-    hoverBelow(x, y);
-  }
-  //otherwise in middle rows
-  else {
-    //if right end
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      hoverLeft(x, y);
-    }
-    //if left end
-    else if (y == 0) {
-      //check right
-      hoverRight(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      hoverLeft(x, y);
-      hoverRight(x, y);
-    }
-    //check above and below in all cases
-    hoverAbove(x, y);
-    hoverBelow(x, y);
-  }
-}
-
-//check if there is a neighbor tile below the empty tile
-function hoverBelow(x, y) {
-  if (table.rows[x + 1].cells[y] != "") {
-    //add hover effect if so
-    table.rows[x + 1].cells[y].classList.add("moveablepiece");
-  }
-}
-
-//check if there is a neighbor tile above the empty tile
-function hoverAbove(x, y) {
-  if (table.rows[x - 1].cells[y] != "") {
-    //add hover effect if so
-    table.rows[x - 1].cells[y].classList.add("moveablepiece");
-  }
-}
-
-//check if there is a neighbor tile to the right of the empty tile
-function hoverRight(x, y) {
-  if (table.rows[x].cells[y + 1] != "") {
-    //add hover effect if so
-    table.rows[x].cells[y + 1].classList.add("moveablepiece");
-  }
-}
-
-//check if there is a neighbor tile to the left of the empty tile
-function hoverLeft(x, y) {
-  if (table.rows[x].cells[y - 1] != "") {
-    //add hover effect if so
-    table.rows[x].cells[y - 1].classList.add("moveablepiece");
-  }
-}
-
-/* Below is the code used to shuffle the tiles of the puzzle game. */
-
-//default values
-var count = 0;
-var neighborsX = new Array();
-var neighborsY = new Array();
-var tileIndex = 0;
 
 //shuffle function
-function shuffleMe() {
-  //while count is less than 1000 (will swap tiles 1000 times)
-  while (count < 1000) {
-    //run through all rows of the puzzle
-    for (var x = 0; x < 4; x++) {
-      //run through the cells in rows
-      for (var y = 0; y < 4; y++) {
-        //if empty tile is found
-        if (table.rows[x].cells[y].innerHTML == "") {
-          //call findNeighbors function to find potential swaps
-          findNeighbors(x, y);
-        }
-      }
-    }
-    //add 1 to counter each time a tile swap is made
-    count++;
-  }
-  //reset count to zero
-  count = 0;
-  //run through all the rows of the puzzle table
-  for (var x = 0; x < 4; x++) {
-    //run through the cells in rows
-    for (var y = 0; y < 4; y++) {
-      //clear old tiles with the class
-      table.rows[x].cells[y].classList.remove("moveablepiece");
-    }
-  }
-  //call function to find new neighboring tiles
-  aroundEmptyTile();
-  //reset timer
-  resetTimer();
+//NOTE !! TOO RANDOMIZED - NEEDS TO BE FIXED !!
+function shuffleMe(){
+	for (var x=0;x<4;x++){
+		for (var y=0;y<4;y++){
+			//find random second cell to work with
+			otherX = Math.floor(Math.random()*4);
+			otherY = Math.floor(Math.random()*4);
+
+			//set other values to above tile
+			otherIndex = table.rows[otherX].cells[otherY].innerHTML;
+			otherImage = table.rows[otherX].cells[otherY].style.cssText;
+
+			//set current values to current tile
+			currentIndex = table.rows[x].cells[y].innerHTML;
+			currentCSS = table.rows[x].cells[y].style.cssText;
+
+			//switch current tile values to the above tile's values
+			table.rows[x].cells[y].innerHTML = otherIndex;
+			table.rows[x].cells[y].style.cssText = otherImage;
+
+			//switch the above tile values to the current tile's initial values
+			table.rows[otherX].cells[otherY].innerHTML = currentIndex;
+			table.rows[otherX].cells[otherY].style.cssText = currentCSS;
+		}
+	}
 }
 
-//find neighboring tiles to swap with
-function findNeighbors(x, y) {
-  //if end row
-  if (x == table.rows.length - 1) {
-    //if right corner
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      checkLeftOfEmpty(x, y);
-    }
-    //if left corner
-    else if (y == 0) {
-      //check right
-      checkRightOfEmpty(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      checkLeftOfEmpty(x, y);
-      checkRightOfEmpty(x, y);
-    }
-    //check above in all cases
-    checkAboveOfEmpty(x, y);
-  }
-  //if top row
-  else if (x == 0) {
-    //if right corner
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      checkLeftOfEmpty(x, y);
-    }
-    //if left corner
-    else if (y == 0) {
-      //check right
-      checkRightOfEmpty(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      checkLeftOfEmpty(x, y);
-      checkRightOfEmpty(x, y);
-    }
-    //check below in all cases
-    checkBelowOfEmpty(x, y);
-  }
-  //otherwise in middle rows
-  else {
-    //if right end
-    if (y == table.rows[0].cells.length - 1) {
-      //check left
-      checkLeftOfEmpty(x, y);
-    }
-    //if left end
-    else if (y == 0) {
-      //check right
-      checkRightOfEmpty(x, y);
-    }
-    //otherwise
-    else {
-      //check both left and right
-      checkLeftOfEmpty(x, y);
-      checkRightOfEmpty(x, y);
-    }
-    //check above and below in all cases
-    checkAboveOfEmpty(x, y);
-    checkBelowOfEmpty(x, y);
-  }
-  //find a random neighboring tile to swap the empty tile with
-  tileIndex = Math.floor(Math.random() * neighborsX.length);
-  //call function to actually swap the tiles
-  swapTiles(x, y, tileIndex);
-}
 
-//check if there is a neighboring tile below the empty tile
-function checkBelowOfEmpty(x, y) {
-  //if it isn't an empty space
-  if (table.rows[x + 1].cells[y].innerHTML != "") {
-    //add the tile to the neighbors array
-    neighborsX.push(x + 1);
-    neighborsY.push(y);
-  }
-}
-
-//check if there is a neighboring tile above the empty tile
-function checkAboveOfEmpty(x, y) {
-  //if it isn't an empty space
-  if (table.rows[x - 1].cells[y].innerHTML != "") {
-    //add the tile to the neighbors array
-    neighborsX.push(x - 1);
-    neighborsY.push(y);
-  }
-}
-
-//check if there is a neighboring tile to the right of the empty tile
-function checkRightOfEmpty(x, y) {
-  //if it isn't an empty space
-  if (table.rows[x].cells[y + 1].innerHTML != "") {
-    //add the tile to the neighbors array
-    neighborsX.push(x);
-    neighborsY.push(y + 1);
-  }
-}
-
-//check if there is a neighboring tile to the left of the empty tile
-function checkLeftOfEmpty(x, y) {
-  //if it isn't an empty space
-  if (table.rows[x].cells[y - 1].innerHTML != "") {
-    //add the tile to the neighbors array
-    neighborsX.push(x);
-    neighborsY.push(y - 1);
-  }
-}
-
-//swap empty and a random tile neighbor
-function swapTiles(x, y, tileIndex) {
-  //call randomly selected neighboring tile
-  otherX = neighborsX[tileIndex];
-  otherY = neighborsY[tileIndex];
-
+<<<<<<< HEAD
   //set other values to above tile
   otherIndex = table.rows[otherX].cells[otherY].innerHTML;
   otherImage = table.rows[otherX].cells[otherY].style.cssText;
@@ -834,6 +644,8 @@ function checkWin() {
     });
   }
 }
+=======
+>>>>>>> parent of 76b8989... Merge branch 'master' of https://github.com/AngelWalker06/WebMasters
 
 function timeToString(time) {
   let diffInHrs = time / 3600000;
@@ -895,6 +707,7 @@ function reset() {
 function showButton(buttonKey) {
   const buttonToShow = buttonKey === "PLAY" ? playButton : pauseButton;
   const buttonToHide = buttonKey === "PLAY" ? pauseButton : playButton;
+
 }
 // Create event listeners
 
@@ -909,12 +722,13 @@ var x = document.getElementById("myAudio");
 
 function playAudio() {
   x.loop = true;
-  x.play();
+	x.play();
 }
 
 function pauseAudio() {
   x.pause();
 }
+<<<<<<< HEAD
 function dropConfetti() {
   const canvasEl = document.querySelector("#canvas");
 
@@ -1028,3 +842,5 @@ function scoreSubmit() {
       "."
   );
 }
+=======
+>>>>>>> parent of 76b8989... Merge branch 'master' of https://github.com/AngelWalker06/WebMasters
