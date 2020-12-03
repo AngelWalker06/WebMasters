@@ -22,6 +22,9 @@ var userReply = "";
 //value for when the page first loads
 var firstLoading = 0;
 
+//move counter
+var moveCounter = 0;
+
 //background list
 var imgList = new Array();
 imgList[0] = "url('cat.jpg')";
@@ -259,6 +262,9 @@ function downardSwitch(x, y) {
   var current = table.rows[x].cells[y];
   var empty = table.rows[x + 1].cells[y];
 
+  //increment move counter
+  moveCounter++;
+
   //get positionsto change
   var top = window.getComputedStyle(current, null).getPropertyValue("top");
   top = Math.round(top.substr(0, top.indexOf("p")));
@@ -287,6 +293,9 @@ function upwwardSwitch(x, y) {
   //get cells to be swithed
   var current = table.rows[x].cells[y];
   var empty = table.rows[x - 1].cells[y];
+
+  //increment move counter
+  moveCounter++;
 
   //get positionsto change
   var bottom = window
@@ -322,6 +331,9 @@ function rightwardSwitch(x, y) {
   var current = table.rows[x].cells[y];
   var empty = table.rows[x].cells[y + 1];
 
+  //increment move counter
+  moveCounter++;
+
   //get positionsto change
   var left = window.getComputedStyle(current, null).getPropertyValue("left");
   left = Math.round(left.substr(0, left.indexOf("p")));
@@ -353,6 +365,9 @@ function leftwardSwitch(x, y) {
   //get cells to be swithed
   var current = table.rows[x].cells[y];
   var empty = table.rows[x].cells[y - 1];
+
+  //increment move counter
+  moveCounter++;
 
   //get positionsto change
   var right = window.getComputedStyle(current, null).getPropertyValue("right");
@@ -978,7 +993,7 @@ function dropConfetti() {
 function scoreSubmit() {
   var name = document.getElementById("name").value;
   var setTime = document.getElementById("time").value;
-  var setMove = document.getElementById("move").value;
+  var setMove = moveCounter;
 
   var currentBestTime = localStorage.getItem(name);
   var currentBestMove = localStorage.getItem(name + "move");
@@ -1003,7 +1018,10 @@ function scoreSubmit() {
   alert(
     "Congrats!" +
       name +
-      "'s best time is " +
+      "'s clear time is" +
+      "and the clear move is" +
+      moveCounter +
+      "the best time is " +
       showBestTime +
       " and best move is " +
       showBestMove +
